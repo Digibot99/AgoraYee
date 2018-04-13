@@ -1,0 +1,23 @@
+.description{
+  margin-left: 28vw;
+  margin-top: -10vw;
+  margin-bottom: : 300vw;
+  font-weight: bold;
+}
+
+.tempImg{
+  margin-top: 5vw;
+}
+
+.areaText{
+  resize: none;
+  text-align: center;
+}
+
+#headingResult{
+  text-align:left;
+}
+
+#addingItemHeading{
+  vertical-align: center;
+}

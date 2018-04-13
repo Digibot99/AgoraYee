@@ -1,0 +1,41 @@
+<html>
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" type="text/css" href="./public/CSS/home.css" />
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+</head>
+<body>
+   		 <div class = "headerColor" >
+    	<div id="headerLogo" style="margin-bottom:0px">
+   		 <input  style="margin-top:20px;text-align:left;text-align:top;float:left;width:300px;font-size" type="image" src="../Images/agorayee.png">
+	</div>
+
+    <a href="account" id="username" class="username" style="float:right;margin-top:9;margin-right:3%;font-size:20px;    color:white; text-decoration: none;">Log In</a>
+
+   	 <br>
+   	 <br>
+   	 <br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div id="headerList" style="margin-bottom:0px">
+	<!-- add this to every html File -->
+  	<script type="text/javascript" src="/js/categoryScript.js"></script>
+  	<a onClick="check(this)" href="list" id="sports" class="create" style="color:white; text-decoration: none;float:left;font-size:25px;background-color:rgb(7, 43, 99)">Sports</a>
+  	<a onClick="check(this)" href="list" id="electronics" class="create" style="color:white; text-decoration: none;float:left;font-size:25px;margin-left:40px;background-color:rgb(7, 43, 99)">Electronics</a>
+  	<a onClick="check(this)" href="list" id="animals" class="create" style="color:white; text-decoration: none;float:left;font-size:25px;margin-left:40px;background-color: rgb(7, 43, 99)">Animals</a>
+  	<a onClick="check(this)" href="list" id="misc" class="create" style="color:white; text-decoration: none;float:left;font-size:25px;margin-left:40px;background-color: rgb(7, 43, 99)">Miscellaneous</a>
+  	<!-- add this to every html File -->
+  	</div>
+  </div>
+      <br/>
+      <br/>
+
+
+		<ul id="list">
+		</ul>
+<script src="/public/js/cartList.js"></script>
+</body>
+</html>

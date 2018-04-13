@@ -1,0 +1,19 @@
+#name{
+}
+#price{
+  position: relative;
+}
+#image{
+  float: left;
+  margin-left: 25px;
+  margin-right: 25px;
+}
+#desc{
+
+}
+#butn{
+right: 0;
+margin-right: 50px;
+position: absolute;
+margin-left: 10px;
+}

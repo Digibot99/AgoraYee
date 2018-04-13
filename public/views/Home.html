@@ -1,0 +1,537 @@
+<html>
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" type="text/css" href="./public/CSS/home.css" />
+    <link rel="stylesheet" type="text/css" href="./public/CSS/Blake.css" />
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+</head>
+<body>
+   		 <div class = "headerColor" >
+    	<div id="headerLogo" style="margin-bottom:0px">
+   		 <input  style="margin-top:20px;text-align:left;text-align:top;float:left;width:300px;font-size" type="image" src="../Images/agorayee.png">
+	</div>
+
+    <a href="login" id="username" class="username" style="float:right;margin-top:9;margin-right:3%;font-size:20px;    color:white; text-decoration: none;">Log In</a>
+
+   	 <br>
+   	 <br>
+   	 <br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div id="headerList" style="margin-bottom:0px">
+	<!-- add this to every html File -->
+  	<script type="text/javascript" src="/js/categoryScript.js"></script>
+  	<a onClick="check(this)" href="list" id="sports" class="create" style="color:white; text-decoration: none;float:left;font-size:25px;background-color:rgb(7, 43, 99)">Sports</a>
+  	<a onClick="check(this)" href="list" id="electronics" class="create" style="color:white; text-decoration: none;float:left;font-size:25px;margin-left:40px;background-color:rgb(7, 43, 99)">Electronics</a>
+  	<a onClick="check(this)" href="list" id="animals" class="create" style="color:white; text-decoration: none;float:left;font-size:25px;margin-left:40px;background-color: rgb(7, 43, 99)">Animals</a>
+  	<a onClick="check(this)" href="list" id="misc" class="create" style="color:white; text-decoration: none;float:left;font-size:25px;margin-left:40px;background-color: rgb(7, 43, 99)">Miscellaneous</a>
+  	<!-- add this to every html File -->
+  	</div>
+  </div>
+      <br/>
+      <br/>
+
+<br>
+
+
+<div class="container">
+<input type="image" src="./images/pubg.jpg" style="border-radius:25px;" onclick="" width="600" height="300" id="bigpic">
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="somethin" style="margin-left:15%;">
+	<p style="font-weight:bold;font-size:25px">Specials</p>
+<input id="scrollLeft3" type = "image" onclick="rightOther()" width="25" height="25"  src="./images/leftarrow.jpg" style="vertical-align:400%;">
+<input type="image" src="./images/ci_sampler.jpg"  onclick="" width="200" height="200" id="movethis" class="remove">
+<input type="image" src="./images/frwhspa_1.jpg"  onclick="" width="200" height="200" id="movethis2" class="remove">
+<input type="image" src="./images/sista_brotha_comp_1.jpg" onclick=""  width="200" height="200" id="movethis3" class="remove">
+<input id="scrollRight3"  src="./images/rightarrow.jpg" width="25" onclick="leftOther()" height="25" type = "image" value=">" style="vertical-align:400%">
+<input type = "image" src="./images/oralb.jpg" style="float:right; margin-right:15%;margin-top:-2.5%;border-radius:15px"  width="250" height="250">
+</div>
+<br>
+<br>
+<div class="somethin" style="margin-left:15%;">
+	<p style="font-weight:bold;font-size:25px;margin-left:70%">Trending</p>
+<input id="scrollLeft4" type = "image" src="./images/leftarrow.jpg" width="25" height="25" onclick="rightOther2()" style="vertical-align:400%;margin-left:15%">
+<input type="image" src="./images/ci_sampler.jpg"  onclick="" width="200" height="200" id="movethis4" class="remove">
+<input type="image" src="./images/frwhspa_1.jpg"  onclick="" width="200" height="200" id="movethis5" class="remove">
+<input type="image" src="./images/sista_brotha_comp_1.jpg" onclick=""  width="200" height="200" id="movethis6" class="remove">
+<input id="scrollRight4" type = "image" src="./images/rightarrow.jpg" width="25" height="25" onclick="leftOther2()" style="vertical-align:400%">
+<input type = "image" src="./images/flextape.jpg" style="float:left; margin-top:-2.5%;border-radius:15px"  width="250" height="250">
+</div>
+
+
+
+
+
+<script>
+
+	var dbItems = [];
+	// console.log("............" + dbItems[0]);
+	var images;
+	var currImgStart;
+	var imagesLength;
+	var images2;
+	var currImgStart2;
+
+	var currPosleft = 0;
+	var	currPosright = 2;
+	var	canMove = true;
+	var	currImgOtherleft = 1;
+	var	currImgOtherright = 3;
+
+	// $.ajax({
+	//  url: "/getItemDB",
+	//  type: "GET",
+	//  success: function(data){
+	//  	console.log("I want the list");
+	// 	 if(!data)
+	// 		 alert("ERROR LOAD");
+	// 	 else{
+	// 	 	// console.log("The data I want =" + data[0].img);
+	// 		 // dbItems = data;
+	// 		 console.log("============" + dbItems[0]);
+	// 		 setDbItem(data);
+	// 		 setEverything();
+	// 	 }
+	//  } ,
+	//  dataType: "json"
+ // });
+
+	function setDbItem(data){
+		console.log("llllllllllll" + data);
+		dbItems = data;
+		console.log("ppppppppppp" + dbItems[0]);
+	}
+
+$(document).ready(function(){
+	console.log("Im first");
+	 $.ajax({
+	 url: "/getItemDB",
+	 type: "GET",
+	 success: function(data){
+	 	console.log("I want the list");
+		 if(!data)
+			 alert("ERROR LOAD");
+		 else{
+		 	// console.log("The data I want =" + data[0].img);
+			 // dbItems = data;
+			 console.log("============" + dbItems[0]);
+			 setDbItem(data);
+			 setEverything();
+		 }
+	 } ,
+	 dataType: "json"
+ });
+	 if(dbItems[0] == undefined)
+	 	console.log("I a ma  bitch");
+	 else
+	 	console.log("Im a god");
+});
+	function setEverything(){
+
+
+
+		console.log("//////////////" + dbItems[0].img);
+		images = [{value:dbItems[0].name,name:dbItems[0].img, id:0},{value:dbItems[1].name,name:dbItems[1].img, id:1},
+		{value:dbItems[2].name,name:dbItems[2].img, id:2}, {value:dbItems[3].name,name:dbItems[3].img, id:3}, {value:dbItems[4].name,name:dbItems[4].img, id:4}];
+
+		currImgStart = 0;
+		imagesLength = 4;
+
+		images2 = [{value:dbItems[5].name,name:dbItems[5].img, id:5},{value:dbItems[6].name,name:dbItems[6].img, id:6},
+		{value:dbItems[7].name,name:dbItems[7].img, id:7}, {value:dbItems[8].name,name:dbItems[8].img, id:8}, {value:dbItems[9].name,name:dbItems[9].img, id:9}];
+		currImgStart2 = 0;
+
+		$("#movethis").attr("src",images[0].name);
+		$("#movethis2").attr("src",images[1].name);
+		$("#movethis3").attr("src",images[2].name);
+		$("#movethis4").attr("src",images2[0].name);
+		$("#movethis5").attr("src",images2[1].name);
+		$("#movethis6").attr("src",images2[2].name);
+
+
+		$("#movethis").attr("onClick", "changeCurr2(0)");
+		$("#movethis2").attr("onClick", "changeCurr2(1)");
+		$("#movethis3").attr("onClick", "changeCurr2(2)");
+		$("#movethis4").attr("onClick", "changeCurr(images2[0].value)");
+		$("#movethis5").attr("onClick", "changeCurr(images2[1].value)");
+		$("#movethis6").attr("onClick", "changeCurr(images2[2].value)");
+	}
+
+
+
+
+
+
+
+
+		function rightOther(){
+			if(canMove){
+				canMove = false;
+				currPosleft--;
+				if(currPosleft<0){
+					currPosleft = imagesLength;
+				}
+			$("#movethis").css("position", "relative ");
+			$("#movethis").css("animation", "mymoveright .25s 1");
+			$("#movethis").css("animation-fill-mode", "forwards");
+
+			$("#movethis2").css("position", "relative ");
+			$("#movethis2").css("animation", "mymoveright .25s 1");
+			$("#movethis2").css("animation-fill-mode", "forwards");
+
+			$("#movethis3").css("position", "relative ");
+			$("#movethis3").css("animation", "mymoveright .25s 1");
+			$("#movethis3").css("animation-fill-mode", "forwards");
+
+			if(currImgOtherright == 3)
+				$("#movethis3").css("opacity", "0.0");
+			else if(currImgOtherright == 2)
+				$("#movethis2").css("opacity", "0.0");
+			else if (currImgOtherright == 1)
+				$("#movethis").css("opacity", "0.0");
+
+
+     setTimeout(function(){
+     	console.log("]]]]]]]]]]]]]]]]=" + currPosleft);
+			 if(currImgOtherright == 3){
+				 $("#movethis3").css("opacity", "1.0");
+  			 $("#movethis3").css("transform", "translate(-410px)");
+				 $("#movethis").css("transform","translate(205px)");
+				 $("#movethis2").css("transform","translate(205px)");
+				 $("#movethis3").attr("src",images[currPosleft].name);
+				 $("#movethis3").attr("onClick","changeCurr2("+currPosleft+")");
+			 }else if (currImgOtherright == 2){
+				 $("#movethis2").css("opacity", "1.0");
+  			 $("#movethis2").css("transform", "translate(-205px)");
+				 $("#movethis").css("transform","translate(410px)");
+				 $("#movethis3").css("transform","translate(-205px)");
+				 $("#movethis2").attr("src",images[currPosleft].name);
+				 $("#movethis2").attr("onClick","changeCurr2("+currPosleft+")");
+			 }else {
+				 $("#movethis").css("opacity", "1.0");
+  			 $("#movethis").css("transform", "translate(0)");
+				 $("#movethis3").css("transform","translate(0)");
+				 $("#movethis2").css("transform","translate(0)");
+				 $("#movethis").attr("src",images[currPosleft].name);
+				 $("#movethis").attr("onClick","changeCurr2("+currPosleft+")");
+			 }
+			 currImgOtherleft--;
+			 currImgOtherright--;
+			 currPosright--;
+			 if(currPosright<0){
+				 currPosright = imagesLength;
+			 }
+			 if(currImgOtherright < 1){
+				 currImgOtherright = 3;
+			 }
+			 if(currImgOtherleft < 1){
+				 currImgOtherleft = 3;
+			 }
+       $("#movethis").css("animation", "none");
+			 $("#movethis2").css("animation", "none");
+			 $("#movethis3").css("animation", "none");
+			 canMove = true;
+    },150);
+	}
+	}
+
+
+
+		function leftOther(){
+			if(canMove){
+			canMove = false;
+			currPosright++;
+			if(currPosright>imagesLength){
+				 currPosright = 0;
+			 }
+			$("#movethis").css("position", "relative ");
+			$("#movethis").css("animation", "mymoveleft .25s 1");
+			$("#movethis").css("animation-fill-mode", "forwards");
+
+			$("#movethis2").css("position", "relative ");
+			$("#movethis2").css("animation", "mymoveleft .25s 1");
+			$("#movethis2").css("animation-fill-mode", "forwards");
+
+			$("#movethis3").css("position", "relative ");
+			$("#movethis3").css("animation", "mymoveleft .25s 1");
+			$("#movethis3").css("animation-fill-mode", "forwards");
+
+			if(currImgOtherleft == 3)
+				$("#movethis3").css("opacity", "0.0");
+			else if(currImgOtherleft == 2)
+				$("#movethis2").css("opacity", "0.0");
+			else if (currImgOtherleft == 1)
+				$("#movethis").css("opacity", "0.0");
+
+		 setTimeout(function(){
+			 if(currImgOtherleft == 1){
+				 $("#movethis").css("opacity", "1.0");
+				 $("#movethis").css("transform","translate(410px)");
+				 $("#movethis2").css("transform","translate(-205px)");
+				 $("#movethis3").css("transform", "translate(-205px)");
+				 $("#movethis").attr("src",images[currPosright].name);
+				 $("#movethis").attr("onClick","changeCurr2("+currPosright+")");
+			 }else if(currImgOtherleft == 3){
+				 $("#movethis3").css("opacity", "1.0");
+				 $("#movethis").css("transform","translate(0)");
+				 $("#movethis2").css("transform","translate(0)");
+				 $("#movethis3").css("transform", "translate(0)");
+				 $("#movethis3").attr("src", images[currPosright].name);
+				 $("#movethis3").attr("onClick","changeCurr2("+currPosright+")");
+			 }else if(currImgOtherleft == 2){
+				 $("#movethis2").css("opacity", "1.0");
+				 $("#movethis").css("transform","translate(205px)");
+				 $("#movethis2").css("transform","translate(205px)");
+				 $("#movethis3").css("transform", "translate(-410px)");
+				 $("#movethis2").attr("src",images[currPosright].name);
+				 $("#movethis2").attr("onClick","changeCurr2("+currPosright+")");
+			 }
+
+			 $("#movethis").css("animation", "none");
+			 $("#movethis2").css("animation", "none");
+			 $("#movethis3").css("animation", "none");
+			 currImgOtherleft++;
+			 currImgOtherright++;
+			 currPosleft++;
+			 if(currPosleft>imagesLength){
+					currPosleft = 0;
+				}
+			 if(currImgOtherleft > 3){
+ 				currImgOtherleft = 1;
+ 			}
+ 			if(currImgOtherright > 3){
+ 				currImgOtherright = 1;
+ 			}
+			  canMove = true;
+		},150);
+	}
+	}
+	//second row of items you can scroll through
+
+	let currPosleft2 = 0;
+	let currPosright2 = 2;
+	let canMove2 = true;
+	let currImgOtherleft2 = 1;
+	let currImgOtherright2 = 3;
+
+	function rightOther2(){
+		if(canMove2){
+			canMove2 = false;
+			currPosleft2--;
+			if(currPosleft2<0){
+				currPosleft2 = imagesLength;
+			}
+		$("#movethis4").css("position", "relative ");
+		$("#movethis4").css("animation", "mymoveright .25s 1");
+		$("#movethis4").css("animation-fill-mode", "forwards");
+
+		$("#movethis5").css("position", "relative ");
+		$("#movethis5").css("animation", "mymoveright .25s 1");
+		$("#movethis5").css("animation-fill-mode", "forwards");
+
+		$("#movethis6").css("position", "relative ");
+		$("#movethis6").css("animation", "mymoveright .25s 1");
+		$("#movethis6").css("animation-fill-mode", "forwards");
+
+		if(currImgOtherright2 == 3)
+			$("#movethis6").css("opacity", "0.0");
+		else if(currImgOtherright2 == 2)
+			$("#movethis5").css("opacity", "0.0");
+		else if (currImgOtherright2 == 1)
+			$("#movethis4").css("opacity", "0.0");
+
+
+	 setTimeout(function(){
+	 	console.log("dddddddddd" + currPosleft2);
+		 if(currImgOtherright2 == 3){
+			 $("#movethis6").css("opacity", "1.0");
+			 $("#movethis6").css("transform", "translate(-410px)");
+			 $("#movethis4").css("transform","translate(205px)");
+			 $("#movethis5").css("transform","translate(205px)");
+			 $("#movethis6").attr("src",images2[currPosleft2].name);
+			 $("#movethis6").attr("onClick","changeCurr(images2["+currPosleft2+"].value)");
+		 }else if (currImgOtherright2 == 2){
+			 $("#movethis5").css("opacity", "1.0");
+			 $("#movethis5").css("transform", "translate(-205px)");
+			 $("#movethis4").css("transform","translate(410px)");
+			 $("#movethis6").css("transform","translate(-205px)");
+			 $("#movethis5").attr("src",images2[currPosleft2].name);
+			 $("#movethis5").attr("onClick","changeCurr(images2["+currPosleft2+"].value)");
+		 }else {
+			 $("#movethis4").css("opacity", "1.0");
+			 $("#movethis4").css("transform", "translate(0)");
+			 $("#movethis6").css("transform","translate(0)");
+			 $("#movethis5").css("transform","translate(0)");
+			 $("#movethis4").attr("src",images2[currPosleft2].name);
+			 $("#movethis4").attr("onClick","changeCurr(images2["+currPosleft2+"].value)");
+		 }
+		 currImgOtherleft2--;
+		 currImgOtherright2--;
+		 currPosright2--;
+		 if(currPosright2<0){
+			 currPosright2 = imagesLength;
+		 }
+		 if(currImgOtherright2 < 1){
+			 currImgOtherright2 = 3;
+		 }
+		 if(currImgOtherleft2 < 1){
+			 currImgOtherleft2 = 3;
+		 }
+		 $("#movethis4").css("animation", "none");
+		 $("#movethis5").css("animation", "none");
+		 $("#movethis6").css("animation", "none");
+		 canMove2 = true;
+	},150);
+}
+}
+
+
+
+	function leftOther2(){
+		if(canMove2){
+		canMove2 = false;
+		currPosright2++;
+		if(currPosright2>imagesLength){
+			 currPosright2 = 0;
+		 }
+		$("#movethis4").css("position", "relative ");
+		$("#movethis4").css("animation", "mymoveleft .25s 1");
+		$("#movethis4").css("animation-fill-mode", "forwards");
+
+		$("#movethis5").css("position", "relative ");
+		$("#movethis5").css("animation", "mymoveleft .25s 1");
+		$("#movethis5").css("animation-fill-mode", "forwards");
+
+		$("#movethis6").css("position", "relative ");
+		$("#movethis6").css("animation", "mymoveleft .25s 1");
+		$("#movethis6").css("animation-fill-mode", "forwards");
+
+		if(currImgOtherleft2 == 3)
+			$("#movethis6").css("opacity", "0.0");
+		else if(currImgOtherleft2 == 2)
+			$("#movethis5").css("opacity", "0.0");
+		else if (currImgOtherleft2 == 1)
+			$("#movethis4").css("opacity", "0.0");
+
+	 setTimeout(function(){
+		 if(currImgOtherleft2 == 1){
+			 $("#movethis4").css("opacity", "1.0");
+			 $("#movethis4").css("transform","translate(410px)");
+			 $("#movethis5").css("transform","translate(-205px)");
+			 $("#movethis6").css("transform", "translate(-205px)");
+			 $("#movethis4").attr("src",images2[currPosright2].name);
+			 $("#movethis4").attr("onClick","changeCurr(images2["+currPosright2+"].value)");
+		 }else if(currImgOtherleft2 == 3){
+			 $("#movethis6").css("opacity", "1.0");
+			 $("#movethis4").css("transform","translate(0)");
+			 $("#movethis5").css("transform","translate(0)");
+			 $("#movethis6").css("transform", "translate(0)");
+			 $("#movethis6").attr("src", images2[currPosright2].name);
+			 $("#movethis6").attr("onClick","changeCurr(images2["+currPosright2+"].value)");
+		 }else if(currImgOtherleft2 == 2){
+			 $("#movethis5").css("opacity", "1.0");
+			 $("#movethis4").css("transform","translate(205px)");
+			 $("#movethis5").css("transform","translate(205px)");
+			 $("#movethis6").css("transform", "translate(-410px)");
+			 $("#movethis5").attr("src",images2[currPosright2].name);
+			 $("#movethis5").attr("onClick","changeCurr(images2["+currPosright2+"].value)");
+		 }
+
+		 $("#movethis4").css("animation", "none");
+		 $("#movethis5").css("animation", "none");
+		 $("#movethis6").css("animation", "none");
+		 currImgOtherleft2++;
+		 currImgOtherright2++;
+		 currPosleft2++;
+		 if(currPosleft2>imagesLength){
+				currPosleft2 = 0;
+			}
+		 if(currImgOtherleft2 > 3){
+			currImgOtherleft2 = 1;
+		}
+		if(currImgOtherright2 > 3){
+			currImgOtherright2 = 1;
+		}
+			canMove2 = true;
+	},150);
+}
+}
+
+	let idClicked;
+
+	function changeCurr(e){
+	// console.log("oooooooo=" + images[0].value);
+	  console.log(e);
+	  idClicked = e;
+	  console.log(idClicked);
+	  itemClicked();
+	}
+
+	function changeCurr2(e){
+		console.log("ooooooo=" + images[e].value);
+	  idClicked = images[e].value;
+	  console.log(idClicked);
+	  itemClicked();
+	}
+	function itemClicked(){
+	  //directs you to a certain image's route
+	  // alert("redirect me");
+	  $.ajax({
+	    url: "/loadItem",
+	    type: "POST",
+	    data: {itemID:idClicked},
+	    success: function(data){
+	      if(!data)
+	        alert("ERROR LOAD");
+	      else
+	        console.log("Good Load");
+	    } ,
+	    dataType: "json"
+	  });
+	  window.location = "itemPage";
+	}
+
+	var images3 = [{name:"./images/pubg.jpg"},{name:"./images/mw2.jpg"},{name:"./images/battlefield1.jpg"}];
+	var currimg3 = 0;
+	change();
+
+	function change(){
+		setTimeout(function(){
+		changePic();
+	},8000);
+	}
+
+	function changePic(){
+		currimg3++;
+		if(currimg3> 2){
+			currimg3 = 0;
+		}
+		$("#bigpic").css("animation", "fadeout .15s linear");
+		setTimeout(function(){
+		$("#bigpic").css("animation", "fadein .15s linear");
+		$("#bigpic").attr("src",images3[currimg3].name);
+	},125);
+	change();
+}
+
+</script>
+</body>
+</html>
