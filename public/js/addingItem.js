@@ -45,7 +45,33 @@ function previewFile(){
     function()
     {
       $("form").submit(function(event){
-        console.log("The path fiel is = " + tempSrc);
+        if ($("#objName").val().includes("script>")){
+          var objName = $("#objName").val();
+          for (var i = 0; i < objName.length; i++) {
+            if (objName.charAt(i) == '<')
+            {
+              alert("ERROR SUBMIT");
+              return false;
+            }
+          }
+        }else {
+          var objName = $("#objName").val();
+        }
+
+        if ($("#objDesc").val().includes("script>")){
+          var objDesc = $("#objDesc").val();
+          for (var i = 0; i < objDesc.length; i++) {
+            if (objDesc.charAt(i) == '<')
+            {
+              alert("ERROR SUBMIT");
+              return false;
+            }
+          }
+        }else {
+          var objDesc = $("#objDesc").val();
+        }
+
+        console.log("The path file is = " + tempSrc);
         if($("#fileStuff").val() == ""){
           alert("Insert an Img");
           return false;
@@ -54,15 +80,15 @@ function previewFile(){
           url: "/submitItem",
           type: "POST",
           //add a path data to the img
-          data: {name:$("#objName").val(),
+          data: {name:objName,
                 price:$("#objPrice").val(),
-                desc:$("#objDesc").val(),
+                desc:objDesc,
                 img:tempSrc,
                 category:$("#objCategory").val()},
           success: function(data){
             if (!data){
               alert("ERROR SUBMIT");
-              }else{
+            }else{
               alert("SUBMIT VALID");
             }
           } ,
@@ -72,9 +98,9 @@ function previewFile(){
           url: "/addUserSellItem",
           type: "POST",
           //add a path data to the img
-          data: {name:$("#objName").val(),
+          data: {name:objName,
                 price:$("#objPrice").val(),
-                desc:$("#objDesc").val(),
+                desc:objDesc,
                 img:tempSrc,
                 category:$("#objCategory").val()},
           success: function(data){
