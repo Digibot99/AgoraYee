@@ -259,6 +259,7 @@
       "resolved": "https://registry.npmjs.org/negotiator/-/negotiator-0.6.1.tgz",
       "version": "0.6.1"
     },
+    "npm-scripts": "^1.4.0",
     "on-finished": {
       "integrity": "sha1-IPEzZIGwg811M3mSoWlxqi2QaUc=",
       "requires": {
@@ -313,6 +314,11 @@
       "version": "5.1.1"
     },
     "sanitize-html": "^1.18.2",
+    "scripts": {
+      "postinstall": "bower install && grunt build",
+      "start": "node server.js",
+      "test": "mocha"
+    },
     "send": {
       "integrity": "sha512-E64YFPUssFHEFBvpbbjr44NCLtI1AohxQ8ZSiJjQLskAdKuriYEP6VyGEsRDH8ScozGpkaX1BGvhanqCwkcEZw==",
       "requires": {
@@ -332,11 +338,6 @@
       },
       "resolved": "https://registry.npmjs.org/send/-/send-0.16.2.tgz",
       "version": "0.16.2"
-    },
-    "scripts": {
-      "start": "node server.js",
-      "test": "mocha",
-      "postinstall": "bower install && grunt build"
     },
     "serve-static": {
       "integrity": "sha512-p/tdJrO4U387R9oMjb1oj7qSMaMfmOyd4j9hOFoxZe2baQszgHcSWjuya/CiT5kgZZKRudHNOA0pYXOl8rQ5nw==",
