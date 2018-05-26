@@ -5,7 +5,6 @@ var clientSessions = require('client-sessions');
 var routes = require("./routes");
 
 var app = express();
-let server = require('http').Server(app);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -23,7 +22,7 @@ app.use(clientSessions({
 
 app.use(routes);
 
-var port = process.env.PORT || 3000;
-server.listen(port, function() {
-    console.log("App is running on port " + port);
-});
+var server = app.listen(process.env.PORT || 5000, function () {
+  var port = server.address().port;
+  console.log("Express is working on port " + port);
+})
