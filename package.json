@@ -334,9 +334,7 @@
       "version": "0.16.2"
     },
     "scripts": {
-      "start": "node server.js",
-      "test": "mocha",
-      "postinstall": "bower install && grunt build"
+      "start": "node server.js"
     },
     "serve-static": {
       "integrity": "sha512-p/tdJrO4U387R9oMjb1oj7qSMaMfmOyd4j9hOFoxZe2baQszgHcSWjuya/CiT5kgZZKRudHNOA0pYXOl8rQ5nw==",
