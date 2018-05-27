@@ -1,0 +1,38 @@
+<html>
+<head>
+    <title>My Account</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" type="text/css" href="/public/CSS/mobile/Home.css" />
+    <link rel="stylesheet" type="text/css" href="/public/CSS/mobile/Account.css" />
+    <link rel="shortcut icon" type="image/png" href="/images/favicon.ico"/>
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+</head>
+<body>
+   		 <div class = "headerColor" >
+    	<div style="margin-bottom:0px">
+          <a href="login" id="username" class="username">Log In</a>
+     		 <image onclick="GoHome()" id="headerLogo" type="image" src="/public/Images/Agorayee.png">
+	    </div>
+  <input id="searchBar" type="text" placeholder="Search for anything">
+
+	<div id="headerList" style="margin-bottom:0px">
+	<!-- add this to every html File -->
+  	<a href="list/sports" id="sports" class="create">Sports</a>
+  	<a href="list/electronics" id="electronics" class="create">Electronics</a>
+  	<a href="list/animals" id="animals" class="create">Animals</a>
+  	<a href="list/misc" id="misc" class="create">Miscellanous</a>
+  	<!-- add this to every html File -->
+  	</div>
+  </div>
+    <h2 id="name">Insert Name Here</h2>
+    <br />
+    <a href="cartList" class="cart">Cart</a>
+    <input id="addItem" type="button" value="Add Item to Sell" />
+    <a href="sellList" class="sell" >Sell List</a>
+    <input id="logout" type="button" value="Logout" />
+  <script type="text/javascript" src="./public/js/session.js"></script>
+    <script src="/public/js/account.js"></script>
+    <script src="/public/js/search.js"></script>
+    <script src="./public/js/GoHome.js"></script>
+  </body>
+</html>

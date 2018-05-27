@@ -1,19 +1,20 @@
+if (isMobileDevice()) {
+	window.location.href = window.location + "/mobile";
+}
 
-function logoutClicked(){
-//add or modify.  Do a get request on /logout and have the callback
-//                from the server redirect to /login.
+function logoutClicked() {
+	//add or modify.  Do a get request on /logout and have the callback
+	//                from the server redirect to /login.
 	$.ajax({
 		url: "/logout",
 		type: "GET",
-		success: function(data){
+		success: function(data) {
 			console.log("Sucess Function");
 			console.log(data);
-			if (!data || data == undefined){
+			if (!data || data == undefined) {
 				console.log("I am not logging out.");
 				alert("ERROR");
-			}
-			else
-			{
+			} else {
 				console.log("I am logging out");
 				window.location = data.redirect;
 			}
@@ -22,31 +23,29 @@ function logoutClicked(){
 	});
 }
 
-function addItemClicked(){
+function addItemClicked() {
 	window.location = "addItem";
 }
-$(document).ready(function(){
+$(document).ready(function() {
 	$.ajax({
 		url: "/userInfo",
 		type: "GET",
-		success: function(data){
+		success: function(data) {
 			console.log("Sucess Function");
-      console.log(data);
-			if (!data || data == undefined){
+			console.log(data);
+			if (!data || data == undefined) {
 				console.log("I am not in the change of info.");
 				alert("ERROR");
-			}
-			else
-			{
-        console.log("I am changing the info");
+			} else {
+				console.log("I am changing the info");
 				console.log(data.username);
-        $("#name").html( data.username + " account page");
+				$("#name").html(data.username + " account page");
 				// info.value = data.name;
 			}
 		},
 		dataType: "json"
 	});
-		////////
-		$("#logout").click(logoutClicked);
-		$("#addItem").click(addItemClicked);
-	});
+	////////
+	$("#logout").click(logoutClicked);
+	$("#addItem").click(addItemClicked);
+});
