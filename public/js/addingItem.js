@@ -1,24 +1,3 @@
-// function submitItem(){
-//   console.log("I want to submit an item");
-//   $.ajax({
-//     url: "/submitItem",
-//     type: "POST",
-//     data: {name:$("#objName").val(), price:$("#objPrice").val(), desc:$("#objDesc").val(), img:$("#currImg").attr("src")},
-//     success: function(data){
-//       if (!data)
-//         alert("ERROR");
-//       else{
-//         $("#objName").val("");
-//         $("#objPrice").val("");
-//         $("#objDesc").val("");
-//         alert("SUBMIT VALID");
-//       }
-//     } ,
-//     dataType: "json"
-//   });
-//   return false;
-// }
-
 function testFunc(){
   console.log($("#currImg").attr('src'));
 }
@@ -29,11 +8,15 @@ function previewFile(){
        var reader  = new FileReader();
        tempSrc = "/images/" + file.name;
        // console.log(file.name);
-
        reader.onloadend = function () {
+         if (!tempSrc.includes(".png") && !tempSrc.includes(".jpg") && !tempSrc.includes(".tif") && !tempSrc.includes(".gif"))
+         {
+             preview.src = "/images/blankObject.png";
+         }
+         else {
            preview.src = reader.result;
+         }
        }
-
        if (file) {
            reader.readAsDataURL(file); //reads the data as a URL
        } else {
@@ -135,3 +118,7 @@ function previewFile(){
       dataType: "json"
     });
     });
+
+    function GoHome() {
+      window.location = "/";
+    }

@@ -1,21 +1,38 @@
-	function successSubmit(data){
-		if(data != null){
-			window.location = data.redirect;
 
-		}
-		else {
-			alert("ERROR LOGIN");
-		}
-	}
 
-	function submitClicked(){
-		$.post('/login', {userName: $('#username').val() , password: $('#password').val()}, successSubmit);
-	}
-	function createClicked(){
-		window.location = "signup";
-	}
 
-	$(document).ready(function(){
-        $("#submit").click(submitClicked);
-        $("#create").click(createClicked);
-  	});
+
+  		function userClicked(){
+
+          $.post("/login",{username:$("#username").val(), password:$("#psw").val()},function(data)
+{
+		window.location = data.redirect;
+});
+
+    			return false;
+    		}
+
+        function signupClicked(){
+          window.location = "signup";
+        }
+
+  		$(document).ready(function(){
+
+        $("#username").keydown( function( event ) {
+            if ( event.which === 13 ) {
+              userClicked();
+              event.preventDefault();
+              return false;
+            }
+        });
+
+        $("#psw").keydown( function( event ) {
+            if ( event.which === 13 ) {
+              userClicked();
+              event.preventDefault();
+              return false;
+            }
+        });
+
+
+  		});

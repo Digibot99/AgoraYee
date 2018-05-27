@@ -4,7 +4,7 @@ function buttonClicked(){
   $.ajax({
     url: "/addUserItem",
     type: "POST",
-    data: {img: $('#image').attr("src"), price:$('#price').val(), name:$("#name").val() , desc:$("#desc").val()},
+    data: {name:$("#name").val()},
     success: function(data){
       if(!data)
         alert("NOT ADDED TO CART");
@@ -17,45 +17,23 @@ function buttonClicked(){
 }
 
 $(document).ready(function(){
-  $.ajax({
-    url: "/loadItemPage",
-    type: "GET",
-    success: function(data){
-      if(!data)
-        alert("NO ITEMINFO");
-      else{
-        console.log("I want to change the page data");
-        console.log('The data img=' + data.img);
-        $("#name").html(data.name);
-        $("#name").val(data.name);
-        $("#price").html(data.price);
-        $("#price").val(data.price);
-        $("#desc").html(data.desc);
-        $("#desc").val(data.desc);
-        $("#image").attr("src", data.img);
-      }
-    } ,
-    dataType: "json"
+  $.get("/searchName",function(data){
+    if(!data)
+      alert("ERROR LOAD");
+    else{
+      // alert("LOADING ITEM");
+      console.log(data.name + " ++ " + data.price + " ++ " + data.desc);
+      $("#name").html(data.name);
+      $("#price").html(data.price);
+      $("#desc").html(data.desc);
+      $("#image").attr("src",data.img);
+    }
   });
-  $.ajax({
-    url: "/userInfo",
-    type: "GET",
-    success: function(data){
-      console.log("Sucess Function");
-      console.log(data);
-      if (!data || data == undefined){
-        console.log("I am not in the change of info.");
-        alert("ERROR");
-      }
-      else
-      {
-        console.log("I am changing the info");
-        console.log(data.name);
-        document.getElementById("username").innerHTML = data.name;
-        // info.value = data.name;
-      }
-    },
-    dataType: "json"
-  });
+
+
+  $.get("/userInfo",function(data){
+		if (data.username)
+			$("#username").html( data.username);
+	});
   $('#butn').click(buttonClicked);
 });

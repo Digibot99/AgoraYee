@@ -7,8 +7,13 @@ function previewFile(){
        // console.log(file.name);
 
        reader.onloadend = function () {
+         if (!tempSrc.includes(".png") && !tempSrc.includes(".jpg") && !tempSrc.includes(".tif") && !tempSrc.includes(".gif"))
+         {
+             preview.src = "/images/blankObject.png";
+         }
+         else {
            preview.src = reader.result;
-       }
+         }
 
        if (file) {
            reader.readAsDataURL(file); //reads the data as a URL
@@ -34,7 +39,7 @@ function previewFile(){
           {
             console.log("I am changing the info");
             console.log(data.name);
-            document.getElementById("username").innerHTML = data.name + "\'s account page";
+            document.getElementById("name").innerHTML = data.name + " account page";
             // info.value = data.name;
           }
           else if(data.redirect)
@@ -64,40 +69,12 @@ function previewFile(){
 
 
       $("form").submit(function(event){
-
-          $("form").submit(function(event){
-            if ($("#objName").val().includes("script>")){
-              var objName = $("#objName").val();
-              for (var i = 0; i < objName.length; i++) {
-                if (objName.charAt(i) == '<')
-                {
-                  alert("ERROR SUBMIT");
-                  return false;
-                }
-              }
-            }else {
-              var objName = $("#objName").val();
-            }
-
-            if ($("#objDesc").val().includes("script>")){
-              var objDesc = $("#objDesc").val();
-              for (var i = 0; i < objDesc.length; i++) {
-                if (objDesc.charAt(i) == '<')
-                {
-                  alert("ERROR SUBMIT");
-                  return false;
-                }
-              }
-            }else {
-              var objDesc = $("#objDesc").val();
-            }
-
         console.log("The path fiel is = " + tempSrc);
         $.ajax({
           url: "/updateItem",
           type: "POST",
           //add a path data to the img
-          data: {name:objName, price:$("#objPrice").val(), desc:objDesc, img:tempSrc},
+          data: {name:$("#objName").val(), price:$("#objPrice").val(), desc:$("#objDesc").val(), img:tempSrc},
           success: function(data){
             if (!data){
               alert("ERROR UPDATE");
@@ -109,4 +86,3 @@ function previewFile(){
         });
       });
     });
-});

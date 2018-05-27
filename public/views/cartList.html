@@ -1,25 +1,18 @@
 <html>
 <head>
-    <title>Home</title>
+    <title>Cart</title>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" type="text/css" href="./public/CSS/home.css" />
+    <link rel="shortcut icon" type="image/png" href="/images/favicon.ico"/>
     <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 </head>
 <body>
    		 <div class = "headerColor" >
     	<div id="headerLogo" style="margin-bottom:0px">
-   		 <input  style="margin-top:20px;text-align:left;text-align:top;float:left;width:300px;font-size" type="image" src="../Images/agorayee.png">
+          <a href="account" id="username" class="username" style="float:right;margin-top:9;margin-right:3%;font-size:20px;    color:white; text-decoration: none;">Log In</a>
+   		 <input onclick="GoHome()" style="margin-top:20px;text-align:left;text-align:top;float:left;height:111.25px;font-size" type="image" src="../Images/agorayee.png">
 	</div>
-
-    <a href="account" id="username" class="username" style="float:right;margin-top:9;margin-right:3%;font-size:20px;    color:white; text-decoration: none;">Log In</a>
-
-   	 <br>
-   	 <br>
-   	 <br>
-	<br>
-	<br>
-	<br>
-	<br>
+  <input id="searchBar" type="text" placeholder="Search for anything">
 	<div id="headerList" style="margin-bottom:0px">
 	<!-- add this to every html File -->
   	<script type="text/javascript" src="/js/categoryScript.js"></script>
@@ -30,12 +23,10 @@
   	<!-- add this to every html File -->
   	</div>
   </div>
-      <br/>
-      <br/>
-
-
 		<ul id="list">
 		</ul>
 <script src="/public/js/cartList.js"></script>
+<script src="/public/js/search.js"></script>
+<script src="./js/GoHome.js"></script>
 </body>
 </html>

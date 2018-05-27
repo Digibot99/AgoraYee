@@ -49,26 +49,10 @@ function itemClicked(){
 }
 
 $(document).ready(function(){
-  $.ajax({
-    url: "/userInfo",
-    type: "GET",
-    success: function(data){
-      console.log("Sucess Function");
-      console.log(data);
-      if (!data || data == undefined){
-        console.log("I am not in the change of info.");
-        alert("ERROR");
-      }
-      else
-      {
-        console.log("I am changing the info");
-        console.log(data.name);
-        document.getElementById("username").innerHTML = data.name;
-        // info.value = data.name;
-      }
-    },
-    dataType: "json"
-  });
+  $.get("/userInfo",function(data){
+		if (data.username)
+			$("#username").html( data.username);
+	});
   loadPage();
   $('.tempImg').click(itemClicked);
 });
