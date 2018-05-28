@@ -11,7 +11,7 @@ var setUpPassport = require("./setuppassport");
 var routes = require("./routes");
 
 var app = express();
-mongoose.connect("mongodb://localhost:27017/datab");
+mongoose.connect("mongodb://everyone:everyone@ds016298.mlab.com:16298/datab");
 setUpPassport();
 
 app.set("port", process.env.PORT || 4000);
@@ -25,7 +25,9 @@ app.use('/views', express.static('./public/views'));
 
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 app.use(bodyParser.json());
 app.use(cookieParser());
 

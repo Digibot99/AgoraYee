@@ -461,29 +461,27 @@ router.post('/fileupload', function(req, res) {
 
 router.post('/addUserItem', function(req, res) {
   if (req.isAuthenticated()) {
-    console.log("Inside addUserItem");
-    if (req.body.name == "")
+    if (req.body.name == "") {
+      console.log("req.body.name was equal to nothing");
       res.json(null);
-    else {
+    } else {
+      console.log("req.body.name is not = to empty");
       var a = {
-        name: req.body,
-        user: req.user.username
+        name: req.body.name,
+        user: req.user.username,
+        image: req.body.img,
+        price: req.body.price,
+        desc: req.body.dsc
       };
-      return (itemDB.addObj(a, res));
+      return (cartDB.addObj(a, res));
     }
-  } else {
-    res.json(undefined);
   }
 });
 
 router.get('/getUserItemList', function(req, res) {
-  console.log("Inside getUserItemList");
-  var itemList = [];
-  for (let i = 0; i < req.user.cartItem.length; i++) {
-    itemList.push(req.user.cartItem[i]);
-  }
-  console.log(itemList);
-  res.json(req.user.cartItem);
+  return (cartDB.getAllItemsofUser({
+    user: req.user.username
+  }, res));
 });
 
 /////////////////////////////////USERSELLITEM///////////////////////////////////
@@ -508,8 +506,9 @@ router.post('/addUserSellItem', function(req, res) {
 });
 
 router.get('/getUserSellItemList', function(req, res) {
-  console.log("Inside getUserItemSellList");
-  res.json(req.user.sellItems);
+  return (sellDB.getAllItemsofUser({
+    user: req.user.username
+  }, res));
 });
 
 
