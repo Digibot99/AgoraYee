@@ -1,25 +1,16 @@
-if (isMobileDevice()) {
-  window.location.href = window.location + "/mobile";
-}
-
 function userClicked() {
-  $.post("/login", {
+
+
+  $.post("/signup", {
     username: $("#username").val(),
     password: $("#psw").val()
   }, function(data) {
-    if (isMobileDevice()) {
-      window.location = "/";
-    } else {
-      window.location = data.redirect;
-    }
+    window.location = data.redirect;
   });
 
   return false;
 }
 
-function signupClicked() {
-  window.location = "signup";
-}
 
 $(document).ready(function() {
 
@@ -39,5 +30,5 @@ $(document).ready(function() {
     }
   });
 
-  $("#login").on('click touchstart', userClicked);
+  $("#signup").click(userClicked);
 });

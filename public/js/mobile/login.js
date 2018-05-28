@@ -1,17 +1,9 @@
-if (isMobileDevice()) {
-  window.location.href = window.location + "/mobile";
-}
-
 function userClicked() {
   $.post("/login", {
     username: $("#username").val(),
     password: $("#psw").val()
   }, function(data) {
-    if (isMobileDevice()) {
-      window.location = "/";
-    } else {
-      window.location = data.redirect;
-    }
+    window.location = data.redirect;
   });
 
   return false;
