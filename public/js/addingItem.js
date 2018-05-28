@@ -113,8 +113,8 @@ $(document).ready(
           alert("ERROR");
         } else {
           console.log("I am changing the info");
-          console.log(data.name);
-          document.getElementById("username").innerHTML = data.name;
+          console.log(data.username);
+          document.getElementById("username").innerHTML = data.username;
           // info.value = data.name;
         }
       },

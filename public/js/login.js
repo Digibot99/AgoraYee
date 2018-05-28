@@ -1,7 +1,3 @@
-if (isMobileDevice()) {
-  window.location.href = window.location + "/mobile";
-}
-
 function userClicked() {
   $.post("/login", {
     username: $("#username").val(),
@@ -18,11 +14,7 @@ function userClicked() {
 }
 
 function signupClicked() {
-  if (isMobileDevice()) {
-    window.location = 'signup/mobile'
-  } else {
-    window.location = "signup";
-  }
+  window.location = "signup";
 }
 
 $(document).ready(function() {
@@ -43,5 +35,5 @@ $(document).ready(function() {
     }
   });
 
-  $("#login").click(userClicked);
+  $("#login").on('click touchstart', userClicked);
 });

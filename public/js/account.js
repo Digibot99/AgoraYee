@@ -1,5 +1,30 @@
 if (isMobileDevice()) {
-	window.location.href = window.location + "/mobile";
+	window.location.href = window.location "/mobile";
+}
+
+
+function buttonClicked() {
+	console.log($('#price').val());
+
+
+	$.ajax({
+		url: "/addUserItem",
+		type: "POST",
+		data: {
+			name: "Football",
+			img: "/public/images/waifu1",
+			price: 9.99,
+			dsc: "Hello"
+		},
+		success: function(data) {
+			if (!data)
+				alert("NOT ADDED TO CART");
+			else {
+				alert("ADDED TO CART");
+			}
+		},
+		dataType: "json"
+	});
 }
 
 function logoutClicked() {
@@ -16,7 +41,11 @@ function logoutClicked() {
 				alert("ERROR");
 			} else {
 				console.log("I am logging out");
-				window.location = data.redirect;
+				if (isMobileDevice()) {
+					window.location.href = data.redirect "/mobile";
+				} else {
+					window.location = data.redirect;
+				}
 			}
 		},
 		dataType: "json"
@@ -39,7 +68,7 @@ $(document).ready(function() {
 			} else {
 				console.log("I am changing the info");
 				console.log(data.username);
-				$("#name").html(data.username + " account page");
+				$("#name").html(data.username " account page");
 				// info.value = data.name;
 			}
 		},
