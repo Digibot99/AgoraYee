@@ -283,18 +283,6 @@ router.get("/mobile", function(req, res) {
   }
 });
 
-router.get("/userInfo/mobile", function(req, res) {
-  if (req.isAuthenticated()) {
-    res.json({
-      username: req.user.username
-    });
-  } else {
-    res.json(null);
-  }
-});
-
-
-
 router.get("/logout/mobile", function(req, res) {
   if (req.isAuthenticated()) {
     req.logout();

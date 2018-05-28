@@ -1,5 +1,5 @@
 if (isMobileDevice()) {
-	window.location.href = window.location "/mobile";
+	window.location.href = window.location + "/mobile";
 }
 
 
@@ -28,8 +28,6 @@ function buttonClicked() {
 }
 
 function logoutClicked() {
-	//add or modify.  Do a get request on /logout and have the callback
-	//                from the server redirect to /login.
 	$.ajax({
 		url: "/logout",
 		type: "GET",
@@ -42,7 +40,7 @@ function logoutClicked() {
 			} else {
 				console.log("I am logging out");
 				if (isMobileDevice()) {
-					window.location.href = data.redirect "/mobile";
+					window.location.href = data.redirect + "/mobile";
 				} else {
 					window.location = data.redirect;
 				}
@@ -68,8 +66,7 @@ $(document).ready(function() {
 			} else {
 				console.log("I am changing the info");
 				console.log(data.username);
-				$("#name").html(data.username " account page");
-				// info.value = data.name;
+				$("#name").html(data.username + " account page");
 			}
 		},
 		dataType: "json"
