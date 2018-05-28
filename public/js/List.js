@@ -1,5 +1,5 @@
 if (isMobileDevice()) {
-  window.location.href = window.location "/mobile";
+  window.location.href = window.location + "/mobile";
 }
 
 function getCategory() { //edited
@@ -11,7 +11,7 @@ function getCategory() { //edited
       if (!data)
         alert("NO CATEGORY");
       else {
-        $("#resHeading").html("Results for "
+        $("#resHeading").html("Results for " +
           data.category);
         loadPage(data.category);
       }
@@ -40,7 +40,7 @@ function getifSearched() { //edited
 }
 
 function loadPage2(curr) {
-  $.get("/getItemDB/"
+  $.get("/getItemDB/",
     curr, success);
 }
 
@@ -49,22 +49,23 @@ function success(data) {
   for (let i = 0; i < data.length; i) {
     if (data[i] != null || data[i] != undefined) {
       $("#list").append(
-        "<input id='"
-        data[i].name "' class='tempImg' type='image' src= "
-        data[i].img " height='200' width='200' border='5' onClick='changeCurr(this)'/>"
-        "<p class='description'>"
-        "Name: "
-        data[i].name "<br>"
-        "Price: $"
-        data[i].price "<br>"
-        "Desc: "
-        data[i].desc "</p><br>");
+        "<input id='" +
+        data[i].name + "' class='tempImg' type='image' src= " +
+        data[i].img +
+        " height='200' width='200' border='5' onClick='changeCurr(this)'/>" +
+        "<p class='description'>" +
+        "Name: " +
+        data[i].name + "<br>" +
+        "Price: $" +
+        data[i].price + "<br>" +
+        "Desc: " +
+        data[i].desc + "</p><br>");
     }
   }
 }
 
 function loadPage(current) {
-  console.log("               "
+  console.log("               ",
     current);
   $.ajax({
     url: "/search",
@@ -74,16 +75,17 @@ function loadPage(current) {
         if (data[i] != null || data[i] != undefined) {
           if (data[i].category == current) {
             $("#list").append(
-              "<input id='"
-              data[i].name "' class='tempImg' type='image' src= "
-              data[i].img " height='200' width='200' border='5' onClick='changeCurr(this)'/>"
-              "<p class='description'>"
-              "Name: "
-              data[i].name "<br>"
-              "Price: $"
-              data[i].price "<br>"
-              "Desc: "
-              data[i].desc "</p><br>");
+              "<input id='" +
+              data[i].name + "' class='tempImg' type='image' src= " +
+              data[i].img +
+              " height='200' width='200' border='5' onClick='changeCurr(this)'/>" +
+              "<p class='description'>" +
+              "Name: " +
+              data[i].name + "<br>" +
+              "Price: $" +
+              data[i].price + "<br>" +
+              "Desc: " +
+              data[i].desc + "</p><br>");
           }
         }
       }
