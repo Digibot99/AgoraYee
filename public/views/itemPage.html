@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Home</title>
+    <title id="title">Home</title>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" type="text/css" href="../public/CSS/Home.css" />
     <link rel="stylesheet" type="text/css" href="../public/CSS/ItemPage.css" />
@@ -10,28 +10,30 @@
 <body>
    		 <div class = "headerColor" >
     	<div id="headerLogo" style="margin-bottom:0px">
-          <a href="account" id="username" class="username" style="float:right;margin-top:9;margin-right:3%;font-size:20px;    color:white; text-decoration: none;">Log In</a>
+          <a href="login" id="username" class="username" style="float:right;margin-top:9;margin-right:3%;font-size:20px;    color:white; text-decoration: none;">Log In</a>
          <input onclick="GoHome()" style="margin-top:20px;text-align:left;text-align:top;float:left;height:111.25px;font-size" type="image" src="../images/Agorayee.png">
 	</div>
+  <input id="searchBar" type="text" placeholder="Search for anything">
 
 	<div id="headerList" style="margin-bottom:0px">
 	<!-- add this to every html File -->
-    <a href="../list/sports" id="sports" class="create" style="color:white; text-decoration: none;float:left;font-size:25px;background-color:rgb(7, 43, 99)">Sports</a>
-    <a href="../list/electronics" id="electronics" class="create" style="color:white; text-decoration: none;float:left;font-size:25px;margin-left:40px;background-color:rgb(7, 43, 99)">Electronics</a>
-    <a href="../list/animals" id="animals" class="create" style="color:white; text-decoration: none;float:left;font-size:25px;margin-left:40px;background-color: rgb(7, 43, 99)">Animals</a>
-    <a href="../list/misc" id="misc" class="create" style="color:white; text-decoration: none;float:left;font-size:25px;margin-left:40px;background-color: rgb(7, 43, 99)">Miscellaneous</a>
-    <!-- add this to every html File -->
+  	<a href="list/sports" id="sports" class="create" style="color:white; text-decoration: none;float:left;font-size:25px;background-color:rgb(7, 43, 99);">Sports</a>
+  	<a href="list/electronics" id="electronics" class="create" style="color:white; text-decoration: none;float:left;font-size:25px;margin-left:40px;background-color:rgb(7, 43, 99);">Electronics</a>
+  	<a href="list/animals" id="animals" class="create" style="color:white; text-decoration: none;float:left;font-size:25px;margin-left:40px;background-color: rgb(7, 43, 99);height:37.5;">Animals</a>
+  	<a href="list/misc" id="misc" class="create" style="color:white; text-decoration: none;float:left;font-size:25px;margin-left:40px;background-color: rgb(7, 43, 99);height:37.5;">Miscellanous</a>
+  	<!-- add this to every html File -->
   	</div>
   </div>
   <img id="image" src="/images/hero.jpg" width="200" height="200">
-      <input id="butn" type="button" value="Add To Cart"/>
-      <input id="butn" type="button" value="Update Item"/>
+      <input id="addbutn" type="button" width="100" height="50" value="Add To Cart"/>
+      <input id="updatebutn" type="button" width="100" height="50" value="Update Item"/>
     <h2 id="name" value="Item Name"></h2>
     <p id="price" value="The Item Price"></p>
     <p id="desc" value="The Item Description"></p>
 
-    <script src="./js/mobile.js"></script>
+    <script src="/public/js/mobile.js"></script>
+    <script src="/public/js/search.js"></script>
     <script type="text/javascript" src="/js/itemPage.js"></script>
-    <script src="./js/GoHome.js"></script>
+    <script src="/public/js/GoHome.js"></script>
   </body>
 </html>
