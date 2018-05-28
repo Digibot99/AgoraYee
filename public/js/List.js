@@ -11,6 +11,16 @@ function getCategory() { //edited
       if (!data)
         alert("NO CATEGORY");
       else {
+        if (data.category == "misc") {
+          data.category = "Miscellaneous";
+        } else if (data.category == "sports") {
+          data.category = "Sports";
+        } else if (data.category == "animals") {
+          data.category = "Animals";
+        } else if (data.category == "electronics") {
+          data.category = "Electronics";
+        }
+
         $("#resHeading").html("Results for " +
           data.category);
         loadPage(data.category);
