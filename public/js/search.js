@@ -8,5 +8,5 @@ $("#searchBar").keydown(function(event) {
 });
 
 function searchFor() {
-  window.location = "../list2/" + $("#searchBar").val();
+  window.location = "/list2/" + $("#searchBar").val();
 }
