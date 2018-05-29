@@ -25,6 +25,7 @@
         preview.src = "";
       }
     }
+  }
 
     $(document).ready(
       function() {
@@ -50,8 +51,9 @@
           },
           dataType: "json"
         });
+
         $.ajax({
-          url: "/getCurrentItemInfo",
+          url: "/getUpdate",
           type: "GET",
           success: function(data) {
             if (!data) {

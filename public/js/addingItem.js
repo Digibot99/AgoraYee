@@ -15,7 +15,7 @@ function previewFile() {
 
   reader.onloadend = function() {
     if (!tempSrc.includes(".png") && !tempSrc.includes(".jpg") && !tempSrc.includes(
-        ".tif") && !tempSrc.includes(".gif")) {
+        ".tif") && !tempSrc.includes(".gif") && !tempSrc.includes(".jpeg")) {
       preview.src = "/images/blankObject.png";
     } else {
       preview.src = reader.result;

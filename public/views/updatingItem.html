@@ -2,8 +2,8 @@
 <head>
     <title>Update Item</title>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" type="text/css" href="./public/CSS/Home.css" />
-    <link rel="stylesheet" type="text/css" href="./public/CSS/addingItem.css" />
+    <link rel="stylesheet" type="text/css" href="/public/CSS/Home.css" />
+    <link rel="stylesheet" type="text/css" href="/public/CSS/addingItem.css" />
     <link rel="shortcut icon" type="image/png" href="/images/favicon.ico"/>
     <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 </head>
@@ -27,7 +27,7 @@
   <h2 id="addingItemHeading">
 
     Item Name:
-    <input id="objName" type="text"/>
+    <input id="objName" type="text" display="none"/>
     <br>
     Category:
     <select id="objCategory" >
@@ -41,7 +41,7 @@
     <input id="objPrice" type="number" min="1"/>
     <br>
 		<form id="myform" action="fileupload" method="post" enctype="multipart/form-data">
-		<img id="currImg" alt="insert image" width="200" height="200" src="../images/blankObject.png" border="5"></img><br>
+		<!-- <img id="currImg" alt="insert image" width="200" height="200" src="../images/blankObject.png" border="5"></img><br> -->
 		<input id="fileStuff" type="file" name="filetoupload" onchange="previewFile()"><br>
     Item Desc: <br />
     <textarea id="objDesc" class="areaText" rows="2" cols="15" style="text-align: center"></textarea>
@@ -51,9 +51,9 @@
 		</form>
 	</h2>
 </div>
-<script src="./js/mobile.js"></script>
-<script src="./js/updatingItem.js"></script>
+<script src="/public/js/mobile.js"></script>
+<script src="/public/js/updatingItem.js"></script>
 <script src="/public/js/search.js"></script>
-<script src="./js/GoHome.js"></script>
+<script src="/public/js/GoHome.js"></script>
 </body>
 </html>

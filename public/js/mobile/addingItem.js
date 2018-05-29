@@ -4,8 +4,8 @@ function previewFile() {
   var preview = document.getElementById('currImg') //selects the query named img
   var file = document.querySelector('input[type=file]').files[0]; //sames as here
   var reader = new FileReader();
-  tempSrc = "public/images/" + file.name;
-  // console.log(file.name);
+  tempSrc = "/public/images/" + file.name;
+
   reader.onloadend = function() {
     if (!tempSrc.includes(".png") && !tempSrc.includes(".jpg") && !tempSrc.includes(
         ".tif") && !tempSrc.includes(".gif")) {
@@ -95,4 +95,23 @@ $(document).ready(
         dataType: "json"
       });
     });
+    $.ajax({
+      url: "/userInfo",
+      type: "GET",
+      success: function(data) {
+        console.log("Sucess Function");
+        console.log(data);
+        if (!data || data == undefined) {
+          console.log("I am not in the change of info.");
+          alert("ERROR");
+        } else {
+          console.log("I am changing the info");
+          console.log(data.username);
+          document.getElementById("username").innerHTML = data.username;
+          // info.value = data.name;
+        }
+      },
+      dataType: "json"
+    });
   });
+

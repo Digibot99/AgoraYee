@@ -59,7 +59,9 @@ router.get("/itemPage/:name", function(request, response) {
   response.sendFile(__dirname + "/public/views/itemPage.html");
 });
 
-router.get("/updateItem", function(request, response) {
+let currUpdate;
+router.get("/updateItem/:name", function(request, response) {
+  currUpdate = request.params.name;
   response.sendFile(__dirname + "/public/views/updatingItem.html");
 });
 router.get("/account", function(request, response) {
@@ -382,6 +384,12 @@ router.get("/getifSearched", function(req, res) { //edited
   }
 });
 
+router.get("/getUpdate", function(req, res) {
+  return (itemDB.getItem({
+    name: currUpdate
+  }, res));
+});
+
 
 router.get("/getCategory", function(req, res) { //edited
   res.json({
@@ -432,22 +440,16 @@ router.get("/loadItemPage", function(req, res) { //edited
 });
 
 ///Upload images
+
 router.post('/fileupload', function(req, res) {
 
-  var form = new formidable.IncomingForm();
-  form.parse(req, function(err, fields, files) {
-    var oldpath = files.filetoupload.path;
-    var newpath = __dirname + '/public/images/' + files.filetoupload.name;
+newpath = newpath.replace(/ /g, "_");
 
-    newpath = newpath.replace(/ /g, "_");
-
-    fs.writeFile(newpath, oldpath, function(err) {
-      if (err) throw err; /*do something else.*/
-    });
-    /*and then Remove the file from tmp location*/
-    fs.unlink(oldpath);
-    res.redirect("/addItem");
-  });
+fs.rename(oldpath, newpath, function(err) {
+  if (err) throw err;
+});
+res.redirect("/addItem");
+});
 });
 
 /////////////////////////////////USERBUYITEM////////////////////////////////////

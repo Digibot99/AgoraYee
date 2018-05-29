@@ -37,9 +37,10 @@ function updatebuttonClicked() {
     },
     success: function(data) {
       if (!data)
-        alert("NOT ADDED TO CART");
+        alert("NOT UPDATING ITEM");
       else {
-        alert("ADDED TO CART");
+        alert("UPDATING ITEM");
+        window.location = "/updateItem/" + $("#name").val();
       }
     },
     dataType: "json"

@@ -68,7 +68,7 @@ myDatabase.prototype.getAllItems = function(res) {
 myDatabase.prototype.updateItem = function(obj, res) {
 	Item.findOneAndUpdate({
 		name: obj.name
-	}, function(error, info) {
+	},{$set:{price:obj.price,desc:obj.desc}}, function(error, info) {
 		if (error) {
 			return res.json(null);
 		} else {
