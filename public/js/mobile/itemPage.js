@@ -50,7 +50,7 @@ $(document).ready(function() {
       // alert("LOADING ITEM");
       console.log(data.name + " ++ " + data.price + " ++ " + data.desc);
       $("#name").html(data.name);
-      $("#price").html(data.price);
+      $("#price").html("$ " + data.price);
       $("#desc").html(data.desc);
       $("#name").val(data.name);
       $("#price").val(data.price);

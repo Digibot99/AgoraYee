@@ -63,7 +63,7 @@ $(document).ready(function() {
 			if (!data || data == undefined) {
 				console.log("I am not in the change of info.");
 				alert("ERROR");
-			} else {
+			} else if (!data.username || data.username == undefined) {} else {
 				console.log("I am changing the info");
 				console.log(data.username);
 				$("#name").html(data.username + "\'s account page");

@@ -121,7 +121,3 @@ $(document).ready(
       dataType: "json"
     });
   });
-
-function GoHome() {
-  window.location = "/";
-}

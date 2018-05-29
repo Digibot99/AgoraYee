@@ -37,7 +37,7 @@
               console.log("I am changing the info");
               console.log(data.name);
               document.getElementById("name").innerHTML = data.name +
-                " account page";
+                "\'s account page";
               // info.value = data.name;
             } else if (data.redirect) {
               document.getElementById("name").innerHTML = "Login";
