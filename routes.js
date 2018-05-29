@@ -395,7 +395,7 @@ router.post("/updateItem", function(req, res) { //edited
     res.json(null);
   else {
     itemDB.updateItem(req.body, res);
-res.redirect("/updateItem");
+    res.json(req.body);
   }
 
 });
@@ -443,7 +443,6 @@ router.post('/fileupload', function(req, res) {
         if (err) throw err;
     res.redirect("/addItem");
   });
-});
 });
 
 /////////////////////////////////USERBUYITEM////////////////////////////////////
