@@ -11,8 +11,8 @@ function previewFile() {
   var preview = document.getElementById('currImg') //selects the query named img
   var file = document.querySelector('input[type=file]').files[0]; //sames as here
   var reader = new FileReader();
-  tempSrc = "/images/" + file.name;
-  // console.log(file.name);
+  tempSrc = "/public/images/" + file.name;
+
   reader.onloadend = function() {
     if (!tempSrc.includes(".png") && !tempSrc.includes(".jpg") && !tempSrc.includes(
         ".tif") && !tempSrc.includes(".gif")) {

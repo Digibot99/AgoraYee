@@ -6,6 +6,7 @@ var myDatabase = function() {
 }
 
 myDatabase.prototype.addObj = function(obj, res) {
+	console.log("Inside CartDB.addobj");
 	console.log(obj);
 	Cart.create(obj, function(error, info) {
 		if (error) {
@@ -29,6 +30,7 @@ myDatabase.prototype.getItem = function(obj, res) {
 }
 
 myDatabase.prototype.getAllItemsofUser = function(obj, res) {
+	console.log(obj);
 	Cart.find({
 		user: obj.user
 	}, function(error, info) {
@@ -39,6 +41,7 @@ myDatabase.prototype.getAllItemsofUser = function(obj, res) {
 			for (let i = 0; i < info.length; i++) {
 				objs.push(info[i]);
 			}
+			console.log("ppppp " + objs);
 			return res.json(objs);
 		}
 	});

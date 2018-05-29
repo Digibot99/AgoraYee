@@ -1,11 +1,31 @@
-function buttonClicked() {
-  console.log($('#price').val());
+function addbuttonClicked() {
 
   $.ajax({
     url: "/addUserItem",
     type: "POST",
     data: {
       name: $("#name").val()
+    },
+    success: function(data) {
+      if (!data)
+        alert("NOT ADDED TO CART");
+      else {
+        alert("ADDED TO CART");
+      }
+    },
+    dataType: "json"
+  });
+}
+
+function updatebuttonClicked() {
+
+  $.ajax({
+    url: "/updateItem",
+    type: "POST",
+    data: {
+      name: $("#name").val(),
+      price: $("#price").val(),
+      desc: $("#desc").val()
     },
     success: function(data) {
       if (!data)
@@ -40,5 +60,6 @@ $(document).ready(function() {
       }
     }
   });
-  $('#butn').click(buttonClicked);
+  $('#addbutn').click(addbuttonClicked);
+  $('#updatebutn').click(updatebuttonClicked);
 });

@@ -11,8 +11,10 @@ var formidable = require('formidable');
 var fs = require('fs');
 const itemdatabase = require('./itemDatabase');
 const cartdatabase = require('./cartDatabase');
+const selldatabase = require('./sellDatabase');
 var itemDB = new itemdatabase();
 var cartDB = new cartdatabase();
+var sellDB = new selldatabase();
 
 router.use(function(req, res, next) {
   res.locals.currentUserjy = req.user;
@@ -459,7 +461,7 @@ router.post('/addUserItem', function(req, res) {
         user: req.user.username,
         image: req.body.img,
         price: req.body.price,
-        desc: req.body.dsc
+        desc: req.body.desc
       };
       return (cartDB.addObj(a, res));
     }
@@ -476,19 +478,24 @@ router.get('/getUserItemList', function(req, res) {
 
 router.post('/addUserSellItem', function(req, res) {
   if (req.isAuthenticated()) {
-    console.log("Inside addUserSellItem");
-    let item = {
-      name: req.body.name,
-      price: req.body.price,
-      desc: req.body.desc,
-      img: req.body.img,
-      category: req.body.category
-    };
-    itemDB.addItem(item);
-    // let returnValue = DB.addUserSellItem(user, item);
-    // console.log(returnValue);
-    res.json(item);
+    console.log("Inside addUserItem");
+    console.log("req.body.name " + req.body.name);
+    if (req.body.name == "") {
+      console.log("req.body.name was equal to nothing");
+      res.json(null);
+    } else {
+      console.log("req.body.name is not = to empty");
+      var a = {
+        name: req.body.name,
+        user: req.user.username,
+        image: req.body.img,
+        price: req.body.price,
+        desc: req.body.desc
+      };
+      return (sellDB.addObj(a, res));
+    }
   } else {
+    console.log("req.isAuthenticated is not true");
     res.json(undefined);
   }
 });
