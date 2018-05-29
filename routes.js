@@ -450,9 +450,8 @@ router.post('/fileupload', function(req, res){
 
       fs.rename(oldpath, newpath, function (err) {
         if (err) throw err;
-
+          });
 		res.redirect("/addItem");
-      });
     });
 });
 
