@@ -1,27 +1,3 @@
-function buttonClicked() {
-	console.log($('#price').val());
-
-
-	$.ajax({
-		url: "../addUserItem",
-		type: "POST",
-		data: {
-			name: "Football",
-			img: "/public/images/waifu1",
-			price: 9.99,
-			dsc: "Hello"
-		},
-		success: function(data) {
-			if (!data)
-				alert("NOT ADDED TO CART");
-			else {
-				alert("ADDED TO CART");
-			}
-		},
-		dataType: "json"
-	});
-}
-
 function logoutClicked() {
 	$.ajax({
 		url: "/logout",
@@ -57,7 +33,7 @@ $(document).ready(function() {
 			} else {
 				console.log("I am changing the info");
 				console.log(data.username);
-				$("#name").html(data.username + " account page");
+				$("#name").html(data.username + "\'s account page");
 			}
 		},
 		dataType: "json"

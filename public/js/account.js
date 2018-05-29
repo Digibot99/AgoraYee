@@ -66,7 +66,7 @@ $(document).ready(function() {
 			} else {
 				console.log("I am changing the info");
 				console.log(data.username);
-				$("#name").html(data.username + " account page");
+				$("#name").html(data.username + "\'s account page");
 			}
 		},
 		dataType: "json"

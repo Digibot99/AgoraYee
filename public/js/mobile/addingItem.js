@@ -1,6 +1,3 @@
-function testFunc() {
-  console.log($("#currImg").attr('src'));
-}
 let tempSrc;
 
 function previewFile() {
@@ -97,14 +94,6 @@ $(document).ready(
         },
         dataType: "json"
       });
-    });
-    $.get("/userInfo", function(data) {
-      if (data != null) {
-        if (data.username) {
-          $("#username").attr('href', "../../account");
-          $("#username").html(data.username);
-        }
-      }
     });
   });
 

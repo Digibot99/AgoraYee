@@ -439,11 +439,14 @@ router.post('/fileupload', function(req, res) {
     var oldpath = files.filetoupload.path;
     var newpath = __dirname + '/public/images/' + files.filetoupload.name;
 
-    fs.rename(oldpath, newpath, function(err) {
-      if (err) throw err;
+    newpath.replace(" ", "_");
 
-      res.redirect("/addItem");
+    fs.writeFile(newpath, oldpath, function(err) {
+      if (err) throw err; /*do something else.*/
     });
+    /*and then Remove the file from tmp location*/
+    fs.unlink(oldpath);
+    res.redirect("/addItem");
   });
 });
 

@@ -1,5 +1,6 @@
 function getCategory() { //edited
   console.log("I have loaded the page");
+
   $.ajax({
     url: "/getCategory",
     type: "GET",
@@ -8,17 +9,14 @@ function getCategory() { //edited
         alert("NO CATEGORY");
       else {
         if (data.category == "misc") {
-          data.category = "Miscellaneous";
+          $("#resHeading").html("Results for Miscellaneous");
         } else if (data.category == "sports") {
-          data.category = "Sports";
+          $("#resHeading").html("Results for Sports");
         } else if (data.category == "animals") {
-          data.category = "Animals";
+          $("#resHeading").html("Results for Animals");
         } else if (data.category == "electronics") {
-          data.category = "Electronics";
+          $("#resHeading").html("Results for Electronics");
         }
-
-        $("#resHeading").html("Results for " +
-          data.category);
         loadPage(data.category);
       }
     }
@@ -46,51 +44,39 @@ function getifSearched() { //edited
 }
 
 function loadPage2(curr) {
-  $.get("/getItemDB/",
-    curr, success);
+  $.get("/getItemDB/" + curr, success);
 }
 
 function success(data) {
   console.log(data);
-  for (let i = 0; i < data.length; i) {
+  for (let i = 0; i < data.length; i++) {
     if (data[i] != null || data[i] != undefined) {
       $("#list").append(
-        "<input id='" +
-        data[i].name + "' class='tempImg' type='image' src= " +
+        "<input id='" + data[i].name + "' class='tempImg' type='image' src= " +
         data[i].img +
         " height='200' width='200' border='5' onClick='changeCurr(this)'/>" +
-        "<p class='description'>" +
-        "Name: " +
-        data[i].name + "<br>" +
-        "Price: $" +
-        data[i].price + "<br>" +
-        "Desc: " +
-        data[i].desc + "</p><br>");
+        "<p class='description'>" + "Name: " + data[i].name + "<br>" +
+        "Price: $" + data[i].price + "<br>" + "Desc: " + data[i].desc +
+        "</p><br>");
     }
   }
 }
 
 function loadPage(current) {
-  console.log("               ",
-    current);
+  console.log("++++++++++++++ " + current);
   $.ajax({
     url: "/search",
     type: "GET",
     success: function(data) {
-      for (let i = 0; i < data.length; i) {
+      for (let i = 0; i < data.length; i++) {
         if (data[i] != null || data[i] != undefined) {
           if (data[i].category == current) {
             $("#list").append(
-              "<input id='" +
-              data[i].name + "' class='tempImg' type='image' src= " +
-              data[i].img +
+              "<input id='" + data[i].name +
+              "' class='tempImg' type='image' src= " + data[i].img +
               " height='200' width='200' border='5' onClick='changeCurr(this)'/>" +
-              "<p class='description'>" +
-              "Name: " +
-              data[i].name + "<br>" +
-              "Price: $" +
-              data[i].price + "<br>" +
-              "Desc: " +
+              "<p class='description'>" + "Name: " + data[i].name +
+              "<br>" + "Price: $" + data[i].price + "<br>" + "Desc: " +
               data[i].desc + "</p><br>");
           }
         }
@@ -110,15 +96,14 @@ function changeCurr(e) {
 function itemClicked(name) {
   //directs you to a certain image's route
   // alert("redirect me");
-  window.location = "../itemPage/"
-  name;
+  window.location = "/itemPage/" + name;
 }
 
 $(document).ready(function() {
   $.get("/userInfo", function(data) {
     if (data != null) {
       if (data.username) {
-        $("#username").attr('href', "../../account");
+        $("#username").attr('href', "/account");
         $("#username").html(data.username);
       }
     }

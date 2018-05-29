@@ -10,7 +10,6 @@
 <body>
    		 <div class = "headerColor" >
     	<div style="margin-bottom:0px">
-          <a href="login" id="username" class="username">Log In</a>
      		 <image onclick="GoHome()" id="headerLogo" type="image" src="/public/images/Agorayee.png">
 	    </div>
   <input id="searchBar" type="text" placeholder="Search for anything">
@@ -42,7 +41,7 @@
     $:
     <input id="objPrice" type="number" min="1"/>
     <br>
-		<form id="myform" action="fileupload" method="post" enctype="multipart/form-data">
+		<form id="myform" action="../fileupload" method="post" enctype="multipart/form-data">
 		<img id="currImg" alt="insert image" width="200" height="200" src="../images/blankObject.png" border="5"></img><br>
 		<input id="fileStuff" type="file" name="filetoupload" onchange="previewFile()"><br>
     Item Desc: <br />
