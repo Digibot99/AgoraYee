@@ -395,7 +395,7 @@ router.post("/updateItem", function(req, res) { //edited
     res.json(null);
   else {
     itemDB.updateItem(req.body, res);
-    res.json(req.body);
+res.redirect("/updateItem");
   }
 
 });
