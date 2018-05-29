@@ -1,15 +1,17 @@
+
+
 var mongoose = require("mongoose");
 
 var itemSchema = mongoose.Schema({
 	name: {
 		required: true,
 		unique: true,
-		type: String
+		type:String
 	},
-	price: Number,
-	desc: String,
-	img: String,
-	category: String
+	price:Number,
+	desc:String,
+	img:String,
+	category:String
 });
 
 var Items = mongoose.model("Items", itemSchema);

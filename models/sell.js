@@ -11,7 +11,7 @@
    },
    price: Number,
    desc: String,
-   image: String
+   img: String
  });
 
  var Sell = mongoose.model("Sell", sellSchema);

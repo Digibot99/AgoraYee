@@ -1,31 +1,11 @@
-function addbuttonClicked() {
+function buttonClicked() {
+  console.log($('#price').val());
 
   $.ajax({
     url: "/addUserItem",
     type: "POST",
     data: {
       name: $("#name").val()
-    },
-    success: function(data) {
-      if (!data)
-        alert("NOT ADDED TO CART");
-      else {
-        alert("ADDED TO CART");
-      }
-    },
-    dataType: "json"
-  });
-}
-
-function updatebuttonClicked() {
-
-  $.ajax({
-    url: "/updateItem",
-    type: "POST",
-    data: {
-      name: $("#name").val(),
-      price: $("#price").val(),
-      desc: $("#desc").val()
     },
     success: function(data) {
       if (!data)
@@ -55,11 +35,10 @@ $(document).ready(function() {
   $.get("/userInfo", function(data) {
     if (data != null) {
       if (data.username) {
-        $("#username").attr('href', "../../../account");
+        $("#username").attr('href', "../../account");
         $("#username").html(data.username);
       }
     }
   });
-  $('#addbutn').click(addbuttonClicked);
-  $('#updatebutn').click(updatebuttonClicked);
+  $('#butn').click(buttonClicked);
 });
