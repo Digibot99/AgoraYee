@@ -444,6 +444,7 @@ router.post('/fileupload', function(req, res) {
     res.redirect("/addItem");
   });
 });
+});
 
 /////////////////////////////////USERBUYITEM////////////////////////////////////
 
