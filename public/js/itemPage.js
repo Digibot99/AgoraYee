@@ -2,9 +2,8 @@ if (isMobileDevice()) {
   window.location.href = window.location + "/mobile";
 }
 
-function buttonClicked() {
-  console.log("The objects price is " + $('#price').val());
-  console.log("The objects name is " + $('#name').val());
+function addbuttonClicked() {
+
   $.ajax({
     url: "/addUserItem",
     type: "POST",
@@ -73,10 +72,11 @@ $(document).ready(function() {
   $.get("/userInfo", function(data) {
     if (data != null) {
       if (data.username) {
-        $("#username").attr('href', "../account");
+        $("#username").attr('href', "/account");
         $("#username").html(data.username);
       }
     }
   });
-  $('#addbutn').click(buttonClicked);
+  $('#addbutn').click(addbuttonClicked);
+  $('#updatebutn').click(updatebuttonClicked);
 });

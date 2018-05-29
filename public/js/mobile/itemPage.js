@@ -4,12 +4,16 @@ function addbuttonClicked() {
     url: "/addUserItem",
     type: "POST",
     data: {
-      name: $("#name").val()
+      name: $("#name").val(),
+      img: $("#image").attr("src"),
+      price: $("#price").val(),
+      desc: $("#desc").val()
     },
     success: function(data) {
       if (!data)
         alert("NOT ADDED TO CART");
       else {
+        console.log("data.image = " + data.image);
         alert("ADDED TO CART");
       }
     },
@@ -48,14 +52,19 @@ $(document).ready(function() {
       $("#name").html(data.name);
       $("#price").html(data.price);
       $("#desc").html(data.desc);
+      $("#name").val(data.name);
+      $("#price").val(data.price);
+      $("#desc").val(data.desc);
       $("#image").attr("src", data.img);
+      $("#title").html(data.name);
+      $("#title").val(data.name);
     }
   });
 
   $.get("/userInfo", function(data) {
     if (data != null) {
       if (data.username) {
-        $("#username").attr('href', "../../account");
+        $("#username").attr('href', "/account");
         $("#username").html(data.username);
       }
     }
