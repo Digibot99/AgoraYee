@@ -38,7 +38,7 @@ function changeCurr(e) {
   console.log($(e).attr("id"));
   idClicked = $(e).attr("id");
   console.log(idClicked);
-  itemClicked();
+  itemClicked($(e).attr("id"));
 }
 
 function itemClicked() {
@@ -58,7 +58,7 @@ function itemClicked() {
     },
     dataType: "json"
   });
-  window.location = "itemPage";
+  window.location = "itemPage/" + data.id;
 }
 
 $(document).ready(function() {

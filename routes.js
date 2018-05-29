@@ -59,7 +59,9 @@ router.get("/itemPage/:name", function(request, response) {
   response.sendFile(__dirname + "/public/views/itemPage.html");
 });
 
-router.get("/updateItem", function(request, response) {
+let currUpdate;
+router.get("/updateItem/:name", function(request, response) {
+  currUpdate=request.params.name;
   response.sendFile(__dirname + "/public/views/updatingItem.html");
 });
 router.get("/account", function(request, response) {
@@ -380,6 +382,12 @@ router.get("/getifSearched", function(req, res) { //edited
       csearch: currSearch
     });
   }
+});
+
+router.get("/getUpdate", function(req, res) {
+  return (itemDB.getItem({
+    name: currUpdate
+  }, res));
 });
 
 
