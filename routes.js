@@ -440,18 +440,20 @@ router.get("/loadItemPage", function(req, res) { //edited
 });
 
 ///Upload images
-router.post('/fileupload', function(req, res) {
 
-  var form = new formidable.IncomingForm();
+router.post('/fileupload', function(req, res){
+
+    var form = new formidable.IncomingForm();
     form.parse(req, function (err, fields, files) {
       var oldpath = files.filetoupload.path;
       var newpath = __dirname + '/public/images/' + files.filetoupload.name;
 
-      fs.rename(oldpath, newpath, function (err){
+      fs.rename(oldpath, newpath, function (err) {
         if (err) throw err;
+
+		res.redirect("/addItem");
       });
-    res.redirect("/addItem");
-});
+    });
 });
 
 /////////////////////////////////USERBUYITEM////////////////////////////////////
