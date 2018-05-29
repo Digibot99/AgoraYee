@@ -447,10 +447,10 @@ router.post('/fileupload', function(req, res) {
       var oldpath = files.filetoupload.path;
       var newpath = __dirname + '/public/images/' + files.filetoupload.name;
 
-      fs.rename(oldpath, newpath, function (err) {
+      fs.rename(oldpath, newpath, function (err){
         if (err) throw err;
+        }):
     res.redirect("/addItem");
-  });
 });
 });
 
