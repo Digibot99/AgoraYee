@@ -45,7 +45,7 @@ function itemClicked() {
   //directs you to a certain image's route
   alert("redirect me");
   $.ajax({
-    url: "/loadItem",
+    url: "/loadItem/" + idClicked,
     type: "POST",
     data: {
       itemID: idClicked
