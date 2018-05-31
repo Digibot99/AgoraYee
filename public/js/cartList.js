@@ -58,7 +58,7 @@ function itemClicked() {
     },
     dataType: "json"
   });
-  window.location = "itemPage";
+  window.location = "/itemPage/" + idClicked;
 }
 
 $(document).ready(function() {
