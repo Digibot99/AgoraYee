@@ -11,6 +11,8 @@ function previewFile() {
   var preview = document.getElementById('currImg') //selects the query named img
   var file = document.querySelector('input[type=file]').files[0]; //sames as here
   var reader = new FileReader();
+  var width = preview.clientWidth;
+  var height = preview.clientHeight;
   tempSrc = "/public/images/" + file.name;
 
   reader.onloadend = function() {
@@ -19,6 +21,8 @@ function previewFile() {
       preview.src = "/images/blankObject.png";
     } else {
       preview.src = reader.result;
+      preview.height = height;
+      preview.width = width;
     }
   }
   if (file) {
