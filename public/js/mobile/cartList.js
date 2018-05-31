@@ -49,7 +49,7 @@ function itemClicked() {
     },
     dataType: "json"
   });
-  window.location = "itemPage/" + idClicked;
+  window.location = "/itemPage/" + idClicked;
 }
 
 $(document).ready(function() {
