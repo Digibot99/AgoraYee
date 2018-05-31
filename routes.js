@@ -61,7 +61,7 @@ router.get("/itemPage/:name", function(request, response) {
 
 let currUpdate;
 router.get("/updateItem/:name", function(request, response) {
-  currUpdate=request.params.name;
+  currUpdate = request.params.name;
   response.sendFile(__dirname + "/public/views/updatingItem.html");
 });
 router.get("/account", function(request, response) {
@@ -441,18 +441,15 @@ router.get("/loadItemPage", function(req, res) { //edited
 
 ///Upload images
 
-router.post('/fileupload', function(req, res){
+router.post('/fileupload', function(req, res) {
 
-    var form = new formidable.IncomingForm();
-    form.parse(req, function (err, fields, files) {
-      var oldpath = files.filetoupload.path;
-      var newpath = __dirname + '/public/images/' + files.filetoupload.name;
+newpath = newpath.replace(/ /g, "_");
 
-      fs.rename(oldpath, newpath, function (err) {
-        if (err) throw err;
-          });
-		res.redirect("/addItem");
-    });
+fs.rename(oldpath, newpath, function(err) {
+  if (err) throw err;
+});
+res.redirect("/addItem");
+});
 });
 
 /////////////////////////////////USERBUYITEM////////////////////////////////////
@@ -467,7 +464,7 @@ router.post('/addUserItem', function(req, res) {
       var a = {
         name: req.body.name,
         user: req.user.username,
-        image: req.body.img,
+        image: req.body.img.replace(/ /g, "_"),
         price: req.body.price,
         desc: req.body.desc
       };
@@ -496,7 +493,7 @@ router.post('/addUserSellItem', function(req, res) {
       var a = {
         name: req.body.name,
         user: req.user.username,
-        image: req.body.img,
+        image: req.body.img.replace(/ /g, "_"),
         price: req.body.price,
         desc: req.body.desc
       };
