@@ -27,45 +27,45 @@ let currCatg;
 let currSearch;
 let searchedSomething;
 
-router.get("/list2/:catg", function(request, response) {
-  currSearch = request.params.catg;
+router.get("/list2/:catg", function(req, res) {
+  currSearch = req.params.catg;
   searchedSomething = true;
   console.log("This is = " + currSearch);
-  response.sendFile(__dirname + "/public/views/List.html");
+  res.sendFile(__dirname + "/public/views/List.html");
 });
 
 
-router.get("/list/:catg", function(request, response) {
-  currCatg = request.params.catg;
+router.get("/list/:catg", function(req, res) {
+  currCatg = req.params.catg;
   // console.log("This is = " + currCatg);
-  response.sendFile(__dirname + "/public/views/List.html");
+  res.sendFile(__dirname + "/public/views/List.html");
 });
 
-router.get("/cartList", function(request, response) {
-  response.sendFile(__dirname + "/public/views/cartList.html");
+router.get("/cartList", function(req, res) {
+  res.sendFile(__dirname + "/public/views/cartList.html");
 });
 
-router.get("/sellList", function(request, response) {
-  response.sendFile(__dirname + "/public/views/sellList.html");
+router.get("/sellList", function(req, res) {
+  res.sendFile(__dirname + "/public/views/sellList.html");
 });
 
-router.get("/addItem", function(request, response) {
-  response.sendFile(__dirname + "/public/views/addingItem.html");
+router.get("/addItem", function(req, res) {
+  res.sendFile(__dirname + "/public/views/addingItem.html");
 });
 
 let currItem;
-router.get("/itemPage/:name", function(request, response) {
-  currItem = request.params.name;
-  response.sendFile(__dirname + "/public/views/itemPage.html");
+router.get("/itemPage/:name", function(req, res) {
+  currItem = req.params.name;
+  res.sendFile(__dirname + "/public/views/itemPage.html");
 });
 
 let currUpdate;
-router.get("/updateItem/:name", function(request, response) {
-  currUpdate=request.params.name;
-  response.sendFile(__dirname + "/public/views/updatingItem.html");
+router.get("/updateItem/:name", function(req, res) {
+  currUpdate = req.params.name;
+  res.sendFile(__dirname + "/public/views/updatingItem.html");
 });
-router.get("/account", function(request, response) {
-  response.sendFile(__dirname + "/public/views/account.html");
+router.get("/account", function(req, res) {
+  res.sendFile(__dirname + "/public/views/account.html");
 });
 
 
@@ -170,41 +170,41 @@ router.get("/logout", function(req, res) {
 });
 
 /////////////// MOBILE html
-router.get("/list2/:catg/mobile", function(request, response) {
-  currSearch = request.params.catg;
+router.get("/list2/:catg/mobile", function(req, res) {
+  currSearch = req.params.catg;
   searchedSomething = true;
   console.log("This is = " + currSearch);
-  response.sendFile(__dirname + "/public/views/mobile/List.html");
+  res.sendFile(__dirname + "/public/views/mobile/List.html");
 });
 
 
-router.get("/list/:catg/mobile", function(request, response) {
-  currCatg = request.params.catg;
-  response.sendFile(__dirname + "/public/views/mobile/List.html");
+router.get("/list/:catg/mobile", function(req, res) {
+  currCatg = req.params.catg;
+  res.sendFile(__dirname + "/public/views/mobile/List.html");
 });
 
-router.get("/cartList/mobile", function(request, response) {
-  response.sendFile(__dirname + "/public/views/mobile/cartList.html");
+router.get("/cartList/mobile", function(req, res) {
+  res.sendFile(__dirname + "/public/views/mobile/cartList.html");
 });
 
-router.get("/sellList/mobile", function(request, response) {
-  response.sendFile(__dirname + "/public/views/mobile/sellList.html");
+router.get("/sellList/mobile", function(req, res) {
+  res.sendFile(__dirname + "/public/views/mobile/sellList.html");
 });
 
-router.get("/addItem/mobile", function(request, response) {
-  response.sendFile(__dirname + "/public/views/mobile/addingItem.html");
+router.get("/addItem/mobile", function(req, res) {
+  res.sendFile(__dirname + "/public/views/mobile/addingItem.html");
 });
 
-router.get("/itemPage/:name/mobile", function(request, response) {
-  currItem = request.params.name;
-  response.sendFile(__dirname + "/public/views/mobile/itemPage.html");
+router.get("/itemPage/:name/mobile", function(req, res) {
+  currItem = req.params.name;
+  res.sendFile(__dirname + "/public/views/mobile/itemPage.html");
 });
 
-router.get("/updateItem/mobile", function(request, response) {
-  response.sendFile(__dirname + "/public/views/mobile/updatingItem.html");
+router.get("/updateItem/mobile", function(req, res) {
+  res.sendFile(__dirname + "/public/views/mobile/updatingItem.html");
 });
-router.get("/account/mobile", function(request, response) {
-  response.sendFile(__dirname + "/public/views/mobile/account.html");
+router.get("/account/mobile", function(req, res) {
+  res.sendFile(__dirname + "/public/views/mobile/account.html");
 });
 
 
@@ -441,18 +441,18 @@ router.get("/loadItemPage", function(req, res) { //edited
 
 ///Upload images
 
-router.post('/fileupload', function(req, res){
+router.post('/fileupload', function(req, res) {
 
-    var form = new formidable.IncomingForm();
-    form.parse(req, function (err, fields, files) {
-      var oldpath = files.filetoupload.path;
-      var newpath = __dirname + '/public/images/' + files.filetoupload.name;
+  var form = new formidable.IncomingForm();
+  form.parse(req, function(err, fields, files) {
+    var oldpath = files.filetoupload.path;
+    var newpath = __dirname + '/public/images/' + files.filetoupload.name;
 
-      fs.rename(oldpath, newpath, function (err) {
-        if (err) throw err;
-          });
-		res.redirect("/addItem");
+    fs.rename(oldpath, newpath, function(err) {
+      if (err) throw err;
     });
+    res.redirect("/addItem");
+  });
 });
 
 /////////////////////////////////USERBUYITEM////////////////////////////////////
