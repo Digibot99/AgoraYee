@@ -18,12 +18,12 @@ function loadPage() {
           if (info[i] != null || info[i] != undefined) {
             console.log(info[i]);
             $("#list").append(
-              "<input id=" + info[i].name +
-              " class='tempImg' type='image' src= " + info[i].image +
-              " height='200' width='200' border='5' onClick='changeCurr(this)'/>" +
-              "<p class='description'>" + "Name: " + info[i].name +
-              "<br>" + "Price: $" + info[i].price + "<br>" + "Desc: " +
-              info[i].desc + "</p><br>");
+              "<input id='" + data[i].name +
+              "' class='tempImg' type='image' src= " + data[i].img +
+              " width='500' border='5' onClick='changeCurr(this)'/>" +
+              "<p class='description'style='font-size:25'>" + "Name: " + data[i].name +
+              "<br> Price: $" + data[i].price + "<br> Desc: " +
+              data[i].desc + "</p><br>");
           }
         }
       }
