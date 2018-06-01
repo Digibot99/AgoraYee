@@ -79,7 +79,7 @@ function loadPage(current) {
               "<input id='" + data[i].name +
               "' class='tempImg' type='image' src= " + data[i].img +
               " width='500' border='5' onClick='changeCurr(this)'/>" +
-              "<p class='description'>" + "Name: " + data[i].name +
+              "<p class='description'style='font-size:30'>" + "Name: " + data[i].name +
               "<br> Price: $" + data[i].price + "<br> Desc: " +
               data[i].desc + "</p><br>");
           }
