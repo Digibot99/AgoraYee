@@ -19,7 +19,7 @@ function loadPage() {
             console.log(info[i]);
             $("#list").append(
               "<input id='" + info[i].name +
-              "' class='tempImg' type='image' src= " + info[i].img +
+              "' class='tempImg' type='image' src= " + info[i].image +
               " width='500' border='5' onClick='changeCurr(this)'/>" +
               "<p class='description'style='font-size:25'>" + "Name: " + info[i].name +
               "<br> Price: $" + info[i].price + "<br> Desc: " +
