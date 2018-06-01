@@ -63,9 +63,6 @@ $(document).ready(function() {
       $("#image").attr("src", data.img);
       $("#title").html(data.name);
       $("#title").val(data.name);
-      console.log("Inside searchName name " + $("#name").val());
-      console.log("Inside searchName image src = " + $("#image").attr(
-        "src") + " image val = " + $("#image").val());
     }
   });
 

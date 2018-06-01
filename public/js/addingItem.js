@@ -1,18 +1,14 @@
 if (isMobileDevice()) {
   window.location.href = window.location + "/mobile";
 }
-
-function testFunc() {
-  console.log($("#currImg").attr('src'));
-}
 let tempSrc;
+let width;
+let ratio;
 
 function previewFile() {
   var preview = document.getElementById('currImg') //selects the query named img
   var file = document.querySelector('input[type=file]').files[0]; //sames as here
   var reader = new FileReader();
-  var width = preview.clientWidth;
-  var height = preview.clientHeight;
   tempSrc = "/public/images/" + file.name;
 
   reader.onloadend = function() {
@@ -21,8 +17,25 @@ function previewFile() {
       preview.src = "/images/blankObject.png";
     } else {
       preview.src = reader.result;
-      preview.height = height;
-      preview.width = width;
+      ratio;
+      if (preview.clientHeight / preview.clientWidth > 1) {
+        ratio = preview.clientWidth / preview.clientHeight;
+      } else {
+        ratio = preview.clientHeight / preview.clientWidth;
+      }
+      width = preview.clientWidth;
+      console.log(width);
+      if (preview.clientWidth > 1000) {
+        $("#currImg").attr('width', 1000 * ratio);
+        width = preview.clientWidth * 1000 * ratio;
+      } else if (preview.clientWidth < 500) {
+        $("#currImg").attr('width', 500 * ratio);
+        width = 500 * ratio;
+      } else {
+        $("#currImg").attr('width', preview.clientWidth * ratio);
+        width = preview.clientWidth * ratio;
+      }
+      console.log(width);
     }
   }
   if (file) {
@@ -64,6 +77,7 @@ $(document).ready(
         alert("Insert an Img");
         return false;
       }
+      alert("here");
       $.ajax({
         url: "/submitItem",
         type: "POST",
@@ -73,7 +87,7 @@ $(document).ready(
           price: $("#objPrice").val(),
           desc: objDesc,
           img: tempSrc,
-          category: $("#objCategory").val()
+          category: $("#objCategory").val(),
         },
         success: function(data) {
           if (!data) {

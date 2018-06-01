@@ -78,9 +78,9 @@ function loadPage(current) {
             $("#list").append(
               "<input id='" + data[i].name +
               "' class='tempImg' type='image' src= " + data[i].img +
-              " height='200' width='200' border='5' onClick='changeCurr(this)'/>" +
+              " width='500' border='5' onClick='changeCurr(this)'/>" +
               "<p class='description'>" + "Name: " + data[i].name +
-              "<br>" + "Price: $" + data[i].price + "<br>" + "Desc: " +
+              "<br> Price: $" + data[i].price + "<br> Desc: " +
               data[i].desc + "</p><br>");
           }
         }
@@ -100,7 +100,7 @@ function changeCurr(e) {
 function itemClicked(name) {
   //directs you to a certain image's route
   // alert("redirect me");
-  window.location = "../itemPage/" + name;
+  window.location = "/itemPage/" + name;
 }
 
 $(document).ready(function() {

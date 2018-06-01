@@ -74,7 +74,7 @@ function loadPage(current) {
             $("#list").append(
               "<input id='" + data[i].name +
               "' class='tempImg' type='image' src= " + data[i].img +
-              " height='200' width='200' border='5' onClick='changeCurr(this)'/>" +
+              " width='200' border='5' onClick='changeCurr(this)'/>" +
               "<p class='description'>" + "Name: " + data[i].name +
               "<br>" + "Price: $" + data[i].price + "<br>" + "Desc: " +
               data[i].desc + "</p><br>");
