@@ -444,10 +444,10 @@ router.post('/fileupload', function(req, res) {
 
   var form = new formidable.IncomingForm();
   form.parse(req, function(err, fields, files) {
-    if (!tempSrc.includes(".png") && !tempSrc.includes(".jpg") && !
-      tempSrc.includes(
-        ".tif") && !tempSrc.includes(".gif") && !tempSrc.includes(
-        ".jpeg")) {
+    if (files.filetoupload.name.includes(".png") || files.filetoupload.name
+      .includes(".jpg") || !files.filetoupload.name.includes(".tif") ||
+      files.filetoupload.name.includes(".gif") || files.filetoupload.name
+      .includes(".jpeg")) {
       var oldpath = files.filetoupload.path;
       var newpath = __dirname + '/public/images/' + files.filetoupload.name;
 
