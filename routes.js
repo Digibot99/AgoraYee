@@ -6,7 +6,6 @@ var User = require("./models/user");
 var router = express.Router();
 var mongoose = require("mongoose");
 
-
 var formidable = require('formidable');
 var fs = require('fs');
 const itemdatabase = require('./itemDatabase');
@@ -445,13 +444,20 @@ router.post('/fileupload', function(req, res) {
 
   var form = new formidable.IncomingForm();
   form.parse(req, function(err, fields, files) {
-    var oldpath = files.filetoupload.path;
-    var newpath = __dirname + '/public/images/' + files.filetoupload.name;
+    if (!tempSrc.includes(".png") && !tempSrc.includes(".jpg") && !
+      tempSrc.includes(
+        ".tif") && !tempSrc.includes(".gif") && !tempSrc.includes(
+        ".jpeg")) {
+      var oldpath = files.filetoupload.path;
+      var newpath = __dirname + '/public/images/' + files.filetoupload.name;
 
-    fs.rename(oldpath, newpath, function(err) {
-      if (err) throw err;
-    });
-    res.redirect("/addItem");
+      fs.rename(oldpath, newpath, function(err) {
+        if (err) throw err;
+      });
+      res.redirect("/addItem");
+    } else {
+      res.redirect("/")
+    }
   });
 });
 
