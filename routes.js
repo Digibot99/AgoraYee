@@ -498,7 +498,6 @@ router.post('/addUserSellItem', function(req, res) {
       console.log("req.body.name was equal to nothing");
       res.json(null);
     } else {
-      console.log("req.body.name is not = to empty");
       var a = {
         name: req.body.name,
         user: req.user.username,
