@@ -444,20 +444,13 @@ router.post('/fileupload', function(req, res) {
 
   var form = new formidable.IncomingForm();
   form.parse(req, function(err, fields, files) {
-    if (files.filetoupload.name.includes(".png") || files.filetoupload.name
-      .includes(".jpg") || !files.filetoupload.name.includes(".tif") ||
-      files.filetoupload.name.includes(".gif") || files.filetoupload.name
-      .includes(".jpeg")) {
-      var oldpath = files.filetoupload.path;
-      var newpath = __dirname + '/public/images/' + files.filetoupload.name;
-
-      fs.rename(oldpath, newpath, function(err) {
-        if (err) throw err;
-      });
-      res.redirect("/addItem");
-    } else {
-      res.redirect("/")
-    }
+    var oldpath = files.filetoupload.path;
+    var newpath = __dirname + '/public/images/' + files.filetoupload.name;
+    console.log("hi");
+    fs.rename(oldpath, newpath, function(err) {
+      if (err) throw err;
+    });
+    res.redirect("/addItem");
   });
 });
 

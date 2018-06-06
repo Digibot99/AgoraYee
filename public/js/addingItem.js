@@ -72,6 +72,16 @@ $(document).ready(
         var objDesc = $("#objDesc").val();
       }
 
+      if (tempSrc.includes(" ")) {
+        for (var i = 0; i < tempSrc.length; i++) {
+          if (tempSrc.charAt(i) == ' ') {
+            tempSrc.charAt(i) = '%';
+            alert("hi");
+            return false;
+          }
+        }
+      }
+
       console.log("The path file is = " + tempSrc);
       if ($("#fileStuff").val() == "") {
         alert("Insert an Img");
